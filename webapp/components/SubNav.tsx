@@ -1,5 +1,7 @@
+"use client";
+
 import Link from "next/link";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import { LangSwitch } from "./LangProvider";
 
 type Active = "home" | "services" | "canalfact" | "dot" | "iris";
@@ -21,6 +23,8 @@ export function SubNav({
   cta: ReactNode;
   withLang?: boolean;
 }) {
+  const [open, setOpen] = useState(false);
+
   return (
     <nav className="subnav-bar" aria-label="Productos Blaise">
       <div className="wrap subnav-row">
@@ -29,8 +33,8 @@ export function SubNav({
             <img data-logo-light src="/assets/blaise-logo.svg" alt="Blaise" />
             <img data-logo-dark src="/assets/blaise-logo-white.svg" alt="Blaise" />
           </Link>
-          <span className="subnav-sep" />
-          <div className="subnav-links">
+          <span className="subnav-sep subnav-sep-desktop" />
+          <div className="subnav-links subnav-links-desktop">
             {LINKS.map((l) => (
               <Link
                 key={l.key}
@@ -45,8 +49,33 @@ export function SubNav({
         <div className="subnav-right">
           {cta}
           {withLang && <LangSwitch />}
+          <button
+            type="button"
+            className="subnav-hamburger"
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span className={`ham-icon${open ? " is-open" : ""}`}>
+              <span /><span /><span />
+            </span>
+          </button>
         </div>
       </div>
+      {open && (
+        <div className="subnav-mobile-menu">
+          {LINKS.map((l) => (
+            <Link
+              key={l.key}
+              href={l.href}
+              className={`subnav-mobile-link${active === l.key ? " is-active" : ""}`}
+              onClick={() => setOpen(false)}
+            >
+              {l.label}
+            </Link>
+          ))}
+        </div>
+      )}
     </nav>
   );
 }

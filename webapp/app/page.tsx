@@ -13,24 +13,12 @@ export default function HomePage() {
           active="home"
           withLang
           cta={
-            <a href="#consulta" className="subnav-cta">
-              <Es inline>Consulta 1:1 gratuita</Es>
-              <En inline>Free 1:1 consultation</En>
-            </a>
-          }
-        />
-        <header className="pagehead">
-          <div className="wrap pagehead-row">
-            <div className="pagehead-brand">
-              <img data-logo-light src="/assets/blaise-logo.svg" alt="Blaise" style={{ height: 32, width: "auto", display: "block" }} />
-              <img data-logo-dark src="/assets/blaise-logo-white.svg" alt="Blaise" style={{ height: 32, width: "auto" }} />
-            </div>
             <a href="#consulta" className="btn btn-primary btn-sm">
               <Es inline>Reservar consulta</Es>
               <En inline>Book a call</En>
             </a>
-          </div>
-        </header>
+          }
+        />
       </div>
 
       <section style={{ background: "var(--surface-inverse)" }}>
