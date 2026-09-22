@@ -1,0 +1,13 @@
+:root{
+--text-display-size:56px;--text-display-lh:1.04;--text-display-ls:-0.028em;--text-display-weight:800;
+--text-h1-size:40px;--text-h1-lh:1.1;--text-h1-ls:-0.022em;--text-h1-weight:800;
+--text-h2-size:30px;--text-h2-lh:1.18;--text-h2-ls:-0.018em;--text-h2-weight:700;
+--text-h3-size:22px;--text-h3-lh:1.28;--text-h3-ls:-0.012em;--text-h3-weight:700;
+--text-h4-size:17px;--text-h4-lh:1.35;--text-h4-ls:-0.006em;--text-h4-weight:600;
+--text-lead-size:19px;--text-lead-lh:1.6;--text-lead-weight:400;
+--text-body-size:16px;--text-body-lh:1.62;--text-body-weight:400;
+--text-small-size:14px;--text-small-lh:1.55;
+--text-caption-size:12.5px;--text-caption-lh:1.45;
+--text-eyebrow-size:12px;--text-eyebrow-ls:0.14em;--text-eyebrow-weight:700;
+--text-mono-size:13px;--text-mono-ls:-0.01em;
+}

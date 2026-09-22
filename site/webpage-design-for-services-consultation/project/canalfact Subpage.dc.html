@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/colors.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/typography.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/radius.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/shadow.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/motion.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/base.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/styles.css">
+<script src="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--surface-page); color: var(--text-body); font-family: var(--font-body); }
+  a { color: var(--text-link); text-decoration: none; }
+  a:hover { color: var(--text-link-hover); text-decoration: underline; }
+  @keyframes cf-fade-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  [data-reveal="single"].cf-armed { opacity: 0; }
+  [data-reveal="single"].cf-armed.cf-in { animation: cf-fade-up 0.55s var(--ease-standard) forwards; }
+  [data-reveal="stagger"].cf-armed > *, [data-reveal="stagger"].cf-armed > * > * { opacity: 0; }
+  [data-reveal="stagger"].cf-armed.cf-in > *, [data-reveal="stagger"].cf-armed.cf-in > * > * { animation: cf-fade-up 0.5s var(--ease-standard) forwards; }
+  [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(1), [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(1) > * { animation-delay: 0s; }
+  [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(2), [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(2) > * { animation-delay: 0.06s; }
+  [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(3), [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(3) > * { animation-delay: 0.12s; }
+  [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(4), [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(4) > * { animation-delay: 0.18s; }
+  [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(5), [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(5) > * { animation-delay: 0.24s; }
+  [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(6), [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(6) > * { animation-delay: 0.3s; }
+  [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(7), [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(7) > * { animation-delay: 0.36s; }
+  [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(8), [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(8) > * { animation-delay: 0.42s; }
+  @media (prefers-reduced-motion: reduce) { [data-reveal] , [data-reveal] > * { opacity: 1 !important; animation: none !important; } }
+  [data-logo-dark] { display: none; }
+  @media (prefers-color-scheme: dark) {
+    [data-logo-light] { display: none !important; }
+    [data-logo-dark] { display: block !important; }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --surface-page: #0d1526;
+      --surface-panel: #16203a;
+      --surface-sunken: #1b2540;
+      --surface-inverse: #070d1a;
+      --surface-inverse-raised: #1b2540;
+      --surface-accent-soft: #1d2647;
+      --surface-teal-soft: #10251f;
+      --text-strong: #ffffff;
+      --text-body: #e4eaf7;
+      --text-muted: #b3bdd1;
+      --text-faint: #8492ae;
+      --text-on-inverse: #ffffff;
+      --text-on-inverse-muted: #b3bdd1;
+      --text-link: #7d92f7;
+      --text-link-hover: #b4c2fb;
+      --line-subtle: #1e2942;
+      --line-default: #2c3757;
+      --line-strong: #3c4a6b;
+      --line-inverse: #26314f;
+      --action-primary: #446bf4;
+      --action-primary-hover: #5a7df6;
+      --action-primary-active: #9aabf9;
+      --action-secondary-bg: #16203a;
+      --action-secondary-hover: #1e2942;
+      --sky-400: #7ec2ef;
+      --sky-300: #8fd0f5;
+      --status-success: #34c4a4;
+      --status-error: #f0737c;
+      --status-success-soft: #123026;
+      --status-error-soft: #3a1b1f;
+      --status-warning: #e8b53c;
+      --status-warning-soft: #362a12;
+      --status-info: #7ec2ef;
+      --status-info-soft: #16293d;
+      --brand-teal: #5fd4b7;
+      --shadow-inset-line: inset 0 -1px 0 #2c3757;
+      --shadow-xs: 0 1px 2px rgba(0,0,0,0.5);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.45);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+      --shadow-lg: 0 10px 28px rgba(0,0,0,0.55);
+      --shadow-xl: 0 20px 50px rgba(0,0,0,0.6);
+    }
+    img[alt="canalfact"] { filter: none !important; }
+  }
+</style>
+</helmet>
+
+<div style="background: var(--surface-page); font-family: var(--font-body); color: var(--text-body); min-height: 100%;">
+
+  <div style="position: sticky; top: 0; z-index: 30;">
+  <nav aria-label="Productos Blaise" style=" background: var(--surface-sunken); border-bottom: 1px solid var(--line-default);">
+    <div style="max-width: 1160px; margin: 0 auto; padding: 9px clamp(20px,4vw,32px); display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 14px; min-width: 0;">
+        <a href="Home%20Page.dc.html" style="display: flex; align-items: center; text-decoration: none; color: var(--text-strong);">
+          <img data-logo-light src="assets/blaise-logo.svg" alt="Blaise" style="height: 22px; width: auto; display: block;"><img data-logo-dark src="assets/blaise-logo-white.svg" alt="Blaise" style="height: 22px; width: auto;">
+        </a>
+        <span style="width: 1px; height: 18px; background: var(--line-default);"></span>
+        <div style="display: flex; align-items: center; gap: 2px; flex-wrap: wrap;">
+          <a href="Home%20Page.dc.html" style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-md); font-family: var(--font-display); font-weight: 600; font-size: 13.5px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; color: var(--text-muted); background: transparent;" style-hover="background: var(--surface-panel); color: var(--text-strong);">Inicio</a>
+          <a href="Services%20Page.dc.html" style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-md); font-family: var(--font-display); font-weight: 600; font-size: 13.5px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; color: var(--text-muted); background: transparent;" style-hover="background: var(--surface-panel); color: var(--text-strong);">Servicios</a>
+          <a href="canalfact%20Subpage.dc.html" style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-md); font-family: var(--font-display); font-weight: 700; font-size: 13.5px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; color: var(--text-strong); background: var(--surface-panel); box-shadow: var(--shadow-xs);" style-hover="background: var(--surface-panel); color: var(--text-strong);">canalfact</a>
+          <a href="Dot%20Page.dc.html" style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-md); font-family: var(--font-display); font-weight: 600; font-size: 13.5px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; color: var(--text-muted); background: transparent;" style-hover="background: var(--surface-panel); color: var(--text-strong);">Dot</a>
+          <a href="Iris%20Page.dc.html" style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-md); font-family: var(--font-display); font-weight: 600; font-size: 13.5px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; color: var(--text-muted); background: transparent;" style-hover="background: var(--surface-panel); color: var(--text-strong);">Iris</a>
+        </div>
+      </div>
+      <a href="mailto:contact@blaisetechnology.com?subject=Consulta%201:1%20gratuita" style="font-size: 12.5px; color: var(--text-link); text-decoration: none; white-space: nowrap;" style-hover="text-decoration: underline;">Consulta 1:1 gratuita</a>
+    </div>
+  </nav>
+
+  <header style=" background: var(--surface-panel); border-bottom: 1px solid var(--line-default); box-shadow: var(--shadow-inset-line);">
+    <div style="max-width: 1160px; margin: 0 auto; padding: 14px clamp(20px,4vw,32px); display: flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <img src="https://blaise-public-files.s3.us-east-1.amazonaws.com/canalfact/assets/logo_canal_fact_dark_bg.svg" alt="canalfact" style="height: 26px; filter: invert(1) brightness(0.25);" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'canalfact',style:'font-family:var(--font-display);font-weight:800;font-size:21px;letter-spacing:-0.02em;color:var(--text-strong)'}))" />
+        <span style="font-size: 12.5px; color: var(--text-faint); border-left: 1px solid var(--line-default); padding-left: 12px;">un producto de <img data-logo-light src="assets/blaise-logo.svg" alt="Blaise" style="height: 18px; width: auto; display: inline-block; vertical-align: middle;"><img data-logo-dark src="assets/blaise-logo-white.svg" alt="Blaise" style="height: 18px; width: auto; vertical-align: middle;"></span>
+      </div>
+      <a href="#funcionalidades" style="font-size: 14.5px; color: var(--text-muted); margin-right: 4px;">Funcionalidades</a>
+      <a href="https://canalfact.blaisetechnology.com/accounts/signup/?utm_source=blaise&amp;utm_medium=website&amp;utm_campaign=canalfact_subpage&amp;utm_content=header_cta" style="text-decoration: none;">
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="primary" size="sm" hint-size="auto,32px">Registrar gratis</x-import>
+      </a>
+    </div>
+  </header>
+  </div>
+
+  <section style="position: relative; background: var(--surface-inverse); overflow: hidden;">
+    <span style="position: absolute; inset-inline: 0; top: 0; height: 4px; background: var(--brand-gradient);"></span>
+    <div style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(32px,4vw,48px); align-items: start;">
+      <div>
+        <p style="margin: 0 0 16px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-teal);">Facturación electrónica</p>
+        <h1 style="margin: 0 0 20px; font-family: var(--font-display); font-weight: 800; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.08; letter-spacing: -0.028em; color: var(--text-on-inverse); text-wrap: pretty;">Conecta tu negocio con la facturación electrónica en Panamá</h1>
+        <p style="margin: 0 0 32px; max-width: 620px; font-size: clamp(16px, 1.5vw, 18px); line-height: 1.62; color: var(--text-on-inverse-muted); text-wrap: pretty;">Emite tus facturas electrónicas de forma sencilla y cumple con la ley. Con canalfact te conectas a los proveedores autorizados por el gobierno desde un solo lugar, sin complicaciones.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+          <a href="https://canalfact.blaisetechnology.com/accounts/signup/?utm_source=blaise&amp;utm_medium=website&amp;utm_campaign=canalfact_subpage&amp;utm_content=hero_cta" style="text-decoration: none;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="gradient" size="lg" hint-size="auto,48px">Registrar gratis</x-import>
+          </a>
+          <a href="#planes" style="text-decoration: none;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="inverse" size="lg" hint-size="auto,48px">Ver planes</x-import>
+          </a>
+        </div>
+        <p style="margin: 20px 0 0; font-size: 14px; color: var(--text-on-inverse-muted);">canalfact es un producto de Blaise Technology, construido y operado por el mismo equipo.</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 16px; background: var(--surface-inverse-raised); border: 1px solid var(--line-inverse); border-radius: var(--radius-xl); padding: 28px; box-shadow: var(--shadow-lg);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px;">
+          <img src="https://blaise-public-files.s3.us-east-1.amazonaws.com/canalfact/assets/logo_canal_fact_dark_bg.svg" alt="canalfact" style="height: 22px;" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'canalfact',style:'font-family:var(--font-display);font-weight:800;font-size:18px;letter-spacing:-0.02em;color:var(--text-on-inverse)'}))" />
+          <span style="font-family: var(--font-mono); font-size: 11px; color: var(--brand-teal); background: rgba(95,212,183,0.12); padding: 3px 8px; border-radius: var(--radius-sm);">TLS 1.3</span>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 4px 0;">
+          <div style="background: var(--surface-inverse); border: 1px solid var(--line-inverse); border-radius: var(--radius-md); padding: 14px;">
+            <p style="margin: 0 0 4px; font-size: 12px; color: var(--text-on-inverse-muted);">Emitidas hoy</p>
+            <p style="margin: 0; font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--text-on-inverse);">127</p>
+          </div>
+          <div style="background: var(--surface-inverse); border: 1px solid var(--line-inverse); border-radius: var(--radius-md); padding: 14px;">
+            <p style="margin: 0 0 4px; font-size: 12px; color: var(--text-on-inverse-muted);">Total mes</p>
+            <p style="margin: 0; font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--text-on-inverse);">B/.94k</p>
+          </div>
+          <div style="background: var(--surface-inverse); border: 1px solid var(--line-inverse); border-radius: var(--radius-md); padding: 14px;">
+            <p style="margin: 0 0 4px; font-size: 12px; color: var(--text-on-inverse-muted);">DGI auth.</p>
+            <p style="margin: 0; font-family: var(--font-mono); font-size: 20px; font-weight: 700; color: var(--brand-teal);">99.8%</p>
+          </div>
+        </div>
+        <div style="height: 1px; background: var(--line-inverse);"></div>
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+          <div>
+            <p style="margin: 0 0 2px; font-family: var(--font-mono); font-size: 13px; color: var(--text-on-inverse);">FE-001-2026-000412</p>
+            <p style="margin: 0; font-size: 12.5px; color: var(--text-on-inverse-muted);">Corp. Miramar S.A.</p>
+          </div>
+          <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--brand-teal); background: rgba(95,212,183,0.12); padding: 4px 10px; border-radius: var(--radius-sm);">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check-circle" size="{{ n14 }}" color="var(--brand-teal)" hint-size="14px,14px"></x-import>
+            Autorizada DGI
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px);">
+    <div data-reveal="single">
+    <p style="margin: 0 0 14px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sky-400);">Qué es canalfact</p>
+    <h2 style="margin: 0 0 18px; font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.14; letter-spacing: -0.026em; color: var(--text-strong); text-wrap: pretty;">La forma sencilla de facturar electrónicamente</h2>
+    <p style="margin: 0 0 20px; max-width: 720px; font-size: clamp(15.5px, 1.4vw, 17px); line-height: 1.62; color: var(--text-muted); text-wrap: pretty;">canalfact no es un proveedor de facturación: es el puente que conecta tu negocio con los proveedores autorizados por el gobierno. Tú eliges con quién trabajar; nosotros hacemos la conexión. Si más adelante quieres cambiar de proveedor, lo haces desde un solo lugar sin tener que cambiar todo tu sistema.</p>
+    <div style="display: flex; align-items: center; gap: 10px; padding: 12px 16px; background: var(--surface-panel); border: 1px solid var(--line-default); border-radius: var(--radius-md); max-width: fit-content;">
+      <img src="https://blaise-public-files.s3.us-east-1.amazonaws.com/canalfact/assets/logo_canal_fact_dark_bg.svg" alt="canalfact" style="height: 15px; filter: invert(1) brightness(0.25);" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'canalfact',style:'font-family:var(--font-display);font-weight:800;font-size:15px;letter-spacing:-0.02em;color:var(--text-strong)'}))" />
+      <span style="font-size: 13.5px; color: var(--text-faint);">·</span>
+      <span style="font-size: 13.5px; color: var(--text-muted);">desarrollado por Blaise Technology</span>
+    </div>
+    </div>
+  </section>
+
+  <section id="funcionalidades" style="background: var(--surface-panel); border-top: 1px solid var(--line-default); border-bottom: 1px solid var(--line-default);">
+    <div style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px);">
+      <div data-reveal="single">
+        <p style="margin: 0 0 14px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sky-400);">Para empresas y profesionales independientes</p>
+        <h2 style="margin: 0 0 18px; font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.14; letter-spacing: -0.026em; color: var(--text-strong); text-wrap: pretty;">Mucho más que emitir la factura</h2>
+        <p style="margin: 0 0 44px; max-width: 760px; font-size: clamp(15.5px, 1.4vw, 17px); line-height: 1.62; color: var(--text-muted); text-wrap: pretty;">canalfact se encarga también de lo que viene después de facturar: cobrar, registrar, reportar y vender en tu local.</p>
+      </div>
+
+      <div data-reveal="stagger" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-bottom: 24px;">
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" accent="{{ true }}" padding="{{ n32 }}" hint-size="100%,220px">
+          <div style="display: flex; gap: 20px; align-items: flex-start;">
+            <span style="flex: 0 0 auto; width: 52px; height: 52px; border-radius: var(--radius-lg); background: var(--surface-accent-soft); display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="bell" size="{{ n26 }}" color="var(--action-primary)" hint-size="26px,26px"></x-import>
+            </span>
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.25; letter-spacing: -0.015em; color: var(--text-strong); text-wrap: pretty;">Recordatorios de pago automáticos</p>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--text-muted); text-wrap: pretty;">Tus facturas a crédito le recuerdan solas a tu cliente cuando toca pagar. Tú dejas de perseguir pagos por WhatsApp.</p>
+              <div><span style="display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--action-primary-active); background: var(--surface-accent-soft); border-radius: var(--radius-sm); padding: 4px 9px;">Ventas a crédito</span></div>
+            </div>
+          </div>
+        </x-import>
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n32 }}" hint-size="100%,220px">
+          <div style="display: flex; gap: 20px; align-items: flex-start;">
+            <span style="flex: 0 0 auto; width: 52px; height: 52px; border-radius: var(--radius-lg); background: var(--surface-accent-soft); display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="store" size="{{ n26 }}" color="var(--action-primary)" hint-size="26px,26px"></x-import>
+            </span>
+            <div style="display: flex; flex-direction: column; gap: 10px; min-width: 0;">
+              <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 20px; line-height: 1.25; letter-spacing: -0.015em; color: var(--text-strong); text-wrap: pretty;">Punto de venta e inventario</p>
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: var(--text-muted); text-wrap: pretty;">Vendes, facturas y descuentas stock en un solo movimiento. Pensado para locales comerciales con mostrador.</p>
+              <div><span style="display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--action-primary-active); background: var(--surface-accent-soft); border-radius: var(--radius-sm); padding: 4px 9px;">Locales comerciales</span></div>
+            </div>
+          </div>
+        </x-import>
+      </div>
+
+      <div data-reveal="stagger" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); gap: 24px;">
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n26 }}" hint-size="100%,210px">
+          <div style="display: flex; flex-direction: column; gap: 13px; height: 100%;">
+            <span style="width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--surface-sunken); display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="coins" size="{{ n20 }}" color="var(--sky-400)" hint-size="20px,20px"></x-import>
+            </span>
+            <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17px; line-height: 1.3; color: var(--text-strong); text-wrap: pretty;">Cuentas por cobrar bajo control</p>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-muted); text-wrap: pretty;">Ve quién te debe y desde cuándo, y envía estados de cuenta sin armarlos a mano.</p>
+          </div>
+        </x-import>
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n26 }}" hint-size="100%,210px">
+          <div style="display: flex; flex-direction: column; gap: 13px; height: 100%;">
+            <span style="width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--surface-sunken); display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="bar-chart-3" size="{{ n20 }}" color="var(--sky-400)" hint-size="20px,20px"></x-import>
+            </span>
+            <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17px; line-height: 1.3; color: var(--text-strong); text-wrap: pretty;">Reportes de impuestos, ingresos y gastos</p>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-muted); text-wrap: pretty;">Retenciones de ITBMS, ITBMS acreditable y por pagar. Sube tus facturas históricas del facturador gratuito y las recibidas, digitales o físicas.</p>
+          </div>
+        </x-import>
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n26 }}" hint-size="100%,210px">
+          <div style="display: flex; flex-direction: column; gap: 13px; height: 100%;">
+            <span style="width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--surface-sunken); display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="printer" size="{{ n20 }}" color="var(--sky-400)" hint-size="20px,20px"></x-import>
+            </span>
+            <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17px; line-height: 1.3; color: var(--text-strong); text-wrap: pretty;">Equipos compatibles</p>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-muted); text-wrap: pretty;">Impresoras térmicas, escáneres de códigos de barra y equipos de punto de venta del mercado.</p>
+          </div>
+        </x-import>
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n26 }}" hint-size="100%,210px">
+          <div style="display: flex; flex-direction: column; gap: 13px; height: 100%;">
+            <span style="width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--surface-sunken); display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="smartphone" size="{{ n20 }}" color="var(--sky-400)" hint-size="20px,20px"></x-import>
+            </span>
+            <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17px; line-height: 1.3; color: var(--text-strong); text-wrap: pretty;">Factura desde tu teléfono</p>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-muted); text-wrap: pretty;">En la obra, en el consultorio o visitando a tu cliente. No necesitas estar en la oficina.</p>
+          </div>
+        </x-import>
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n26 }}" hint-size="100%,210px">
+          <div style="display: flex; flex-direction: column; gap: 13px; height: 100%;">
+            <span style="width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--surface-sunken); display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="image" size="{{ n20 }}" color="var(--sky-400)" hint-size="20px,20px"></x-import>
+            </span>
+            <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17px; line-height: 1.3; color: var(--text-strong); text-wrap: pretty;">Tu logo en tus facturas</p>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-muted); text-wrap: pretty;">Tu factura sale con tu marca, no con la de un sistema genérico.</p>
+            <div style="margin-top: auto; padding-top: 6px;"><span style="display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--action-primary-active); background: var(--surface-accent-soft); border-radius: var(--radius-sm); padding: 4px 9px;">Según el plan</span></div>
+          </div>
+        </x-import>
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n26 }}" hint-size="100%,210px">
+          <div style="display: flex; flex-direction: column; gap: 13px; height: 100%;">
+            <span style="width: 40px; height: 40px; border-radius: var(--radius-md); background: var(--surface-sunken); display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="shield-check" size="{{ n20 }}" color="var(--sky-400)" hint-size="20px,20px"></x-import>
+            </span>
+            <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17px; line-height: 1.3; color: var(--text-strong); text-wrap: pretty;">Gestión de la firma electrónica</p>
+            <p style="margin: 0; font-size: 15px; line-height: 1.6; color: var(--text-muted); text-wrap: pretty;">Nos encargamos del trámite y la administramos por ti.</p>
+            <div style="margin-top: auto; padding-top: 6px;"><span style="display: inline-block; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--action-primary-active); background: var(--surface-accent-soft); border-radius: var(--radius-sm); padding: 4px 9px;">US$100 · 2 años</span></div>
+          </div>
+        </x-import>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: var(--surface-page); border-bottom: 1px solid var(--line-default);">
+    <div style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px);">
+      <p style="margin: 0 0 14px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sky-400);">Qué te ofrece</p>
+      <h2 style="margin: 0 0 12px; font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.14; letter-spacing: -0.026em; color: var(--text-strong);">Todo tu tema de facturas en un solo lugar</h2>
+      <p style="margin: 0 0 48px; max-width: 720px; font-size: clamp(15.5px, 1.4vw, 17px); line-height: 1.62; color: var(--text-muted); text-wrap: pretty;">Todo organizado para que puedas facturar con tranquilidad y cumplir con la ley sin complicaciones.</p>
+
+      <div data-reveal="stagger" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n28 }}" hint-size="100%,220px">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--surface-accent-soft); display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="file-text" size="{{ n22 }}" color="var(--sky-400)" hint-size="22px,22px"></x-import>
+            </span>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17.5px; color: var(--text-strong);">Facturación rápida</p>
+              <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);">Envías los datos de tu factura; canalfact se encarga de enviarlos al proveedor autorizado y a DGI. Rápido y sencillo.</p>
+            </div>
+          </div>
+        </x-import>
+
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n28 }}" hint-size="100%,220px">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--surface-accent-soft); display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check-circle" size="{{ n22 }}" color="var(--sky-400)" hint-size="22px,22px"></x-import>
+            </span>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17.5px; color: var(--text-strong);">Cumplimiento con la ley</p>
+              <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);">Trabajamos con proveedores autorizados por el gobierno. Tu facturación cumple sin que tengas que preocuparte por los detalles.</p>
+            </div>
+          </div>
+        </x-import>
+
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n28 }}" hint-size="100%,220px">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--surface-accent-soft); display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="plug" size="{{ n22 }}" color="var(--sky-400)" hint-size="22px,22px"></x-import>
+            </span>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17.5px; color: var(--text-strong);">Elige y cambia de proveedor</p>
+              <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);">Puedes elegir y cambiar de proveedor autorizado cuando quieras. Un solo lugar para gestionar todo, sin quedarte atado a uno solo.</p>
+            </div>
+          </div>
+        </x-import>
+
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n28 }}" hint-size="100%,220px">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--surface-accent-soft); display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="bar-chart-3" size="{{ n22 }}" color="var(--sky-400)" hint-size="22px,22px"></x-import>
+            </span>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17.5px; color: var(--text-strong);">Todo organizado para tu contador</p>
+              <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);">Impuestos, clientes, productos y reportes desde un solo lugar. La información que necesita tu contador, ordenada y a mano.</p>
+            </div>
+          </div>
+        </x-import>
+
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n28 }}" hint-size="100%,220px">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--surface-accent-soft); display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="search" size="{{ n22 }}" color="var(--sky-400)" hint-size="22px,22px"></x-import>
+            </span>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17.5px; color: var(--text-strong);">Historial y comprobantes</p>
+              <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);">Todo queda registrado. Puedes ver el historial de tus facturas y comprobar que fueron autorizadas correctamente por DGI.</p>
+            </div>
+          </div>
+        </x-import>
+
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n28 }}" hint-size="100%,220px">
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <span style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--surface-accent-soft); display: flex; align-items: center; justify-content: center;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="shield-check" size="{{ n22 }}" color="var(--sky-400)" hint-size="22px,22px"></x-import>
+            </span>
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17.5px; color: var(--text-strong);">Tus datos protegidos</p>
+              <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);">Tu información está segura. Usamos las mejores prácticas para proteger tus datos y que puedas trabajar con tranquilidad.</p>
+            </div>
+          </div>
+        </x-import>
+      </div>
+    </div>
+  </section>
+
+  <section id="planes" style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px);">
+    <p style="margin: 0 0 14px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sky-400);">Planes</p>
+    <h2 style="margin: 0 0 24px; font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.14; letter-spacing: -0.026em; color: var(--text-strong);">Elige tu plan</h2>
+    <p style="margin: 0 0 48px; max-width: 720px; font-size: clamp(15.5px, 1.4vw, 17px); line-height: 1.62; color: var(--text-muted); text-wrap: pretty;">Todos los planes incluyen facturación electrónica con proveedor autorizado. El pago anual sale más barato que el mensual y puedes cambiar de plan cuando quieras.</p>
+
+    <div data-reveal="stagger" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(268px, 1fr)); gap: 24px; align-items: stretch;">
+      <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n28 }}" hint-size="100%,430px">
+        <div style="display: flex; flex-direction: column; gap: 18px; height: 100%;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--text-strong);">Micro</p>
+            </div>
+            <p style="margin: 6px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Hasta 17 facturas mensuales</p>
+          </div>
+
+          <div style="background: var(--surface-sunken); border-radius: var(--radius-md); padding: 16px;">
+            <div style="display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap;">
+              <p style="margin: 0; font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--text-strong);">US$ 35.99<span style="font-family: var(--font-body); font-size: 13px; font-weight: 400; color: var(--text-muted);"> /año</span></p>
+            </div>
+            <p style="margin: 10px 0 0; font-size: 12.5px; color: var(--text-faint);">Solo pago anual</p>
+          </div>
+
+          <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px;">
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Automatizaciones</span></li>
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Soporte personalizado</span></li>
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Reportes de ventas semanales y mensuales</span></li>
+          </ul>
+
+          <div style="margin-top: auto;">
+            <a href="https://canalfact.blaisetechnology.com/configuracion/plan/elegir/?utm_source=blaise&amp;utm_medium=website&amp;utm_campaign=canalfact_subpage&amp;utm_content=plan_micro" style="text-decoration: none;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="secondary" size="md" hint-size="100%,40px">Seleccionar plan</x-import>
+            </a>
+          </div>
+        </div>
+      </x-import>
+
+      <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n28 }}" hint-size="100%,430px">
+        <div style="display: flex; flex-direction: column; gap: 18px; height: 100%;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--text-strong);">Starter</p>
+            </div>
+            <p style="margin: 6px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">80 facturas mensuales · 960 al año</p>
+          </div>
+
+          <div style="background: var(--surface-sunken); border-radius: var(--radius-md); padding: 16px;">
+            <p style="margin: 0; font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--text-strong);">US$ 7.99<span style="font-family: var(--font-body); font-size: 13.5px; font-weight: 400; color: var(--text-muted);"> /mes</span></p>
+            <div style="display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line-default);">
+              <p style="margin: 0; font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: var(--text-strong);">US$ 91.99<span style="font-family: var(--font-body); font-size: 13px; font-weight: 400; color: var(--text-muted);"> /año</span></p>
+              <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--status-success); background: var(--status-success-soft); border-radius: var(--radius-sm); padding: 3px 8px;">Ahorra 4%</span>
+            </div>
+          </div>
+
+          <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px;">
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Automatizaciones Pro</span></li>
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Recordatorios de pago automáticos</span></li>
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Plantillas de factura</span></li>
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Reportes fiscales para CPAs</span></li>
+          </ul>
+
+          <div style="margin-top: auto;">
+            <a href="https://canalfact.blaisetechnology.com/configuracion/plan/elegir/?utm_source=blaise&amp;utm_medium=website&amp;utm_campaign=canalfact_subpage&amp;utm_content=plan_starter" style="text-decoration: none;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="secondary" size="md" hint-size="100%,40px">Seleccionar plan</x-import>
+            </a>
+          </div>
+        </div>
+      </x-import>
+
+      <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n28 }}" accent="{{ true }}" hint-size="100%,430px">
+        <div style="display: flex; flex-direction: column; gap: 18px; height: 100%;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--text-strong);">Pro</p>
+              <span style="font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: #ffffff; background: var(--status-success); border-radius: var(--radius-sm); padding: 3px 8px;">Mejor valor</span>
+            </div>
+            <p style="margin: 6px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">200 facturas mensuales · 2,400 al año</p>
+          </div>
+
+          <div style="background: var(--surface-accent-soft); border-radius: var(--radius-md); padding: 16px;">
+            <p style="margin: 0; font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--action-primary-active);">US$ 15.99<span style="font-family: var(--font-body); font-size: 13.5px; font-weight: 400; color: var(--text-muted);"> /mes</span></p>
+            <div style="display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line-default);">
+              <p style="margin: 0; font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: var(--text-strong);">US$ 117.99<span style="font-family: var(--font-body); font-size: 13px; font-weight: 400; color: var(--text-muted);"> /año</span></p>
+              <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--status-success); background: var(--status-success-soft); border-radius: var(--radius-sm); padding: 3px 8px;">Ahorra 39%</span>
+            </div>
+          </div>
+
+          <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px;">
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Todo lo de Starter</span></li>
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Customización de reportes</span></li>
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Dominio personalizado</span></li>
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Tu logo en el CAFE</span></li>
+          </ul>
+
+          <div style="margin-top: auto;">
+            <a href="https://canalfact.blaisetechnology.com/configuracion/plan/elegir/?utm_source=blaise&amp;utm_medium=website&amp;utm_campaign=canalfact_subpage&amp;utm_content=plan_pro" style="text-decoration: none;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="primary" size="md" hint-size="100%,40px">Seleccionar plan</x-import>
+            </a>
+          </div>
+        </div>
+      </x-import>
+
+      <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n28 }}" hint-size="100%,430px">
+        <div style="display: flex; flex-direction: column; gap: 18px; height: 100%;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--text-strong);">Business</p>
+            </div>
+            <p style="margin: 6px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">550 facturas mensuales · 6,600 al año</p>
+          </div>
+
+          <div style="background: var(--surface-sunken); border-radius: var(--radius-md); padding: 16px;">
+            <p style="margin: 0; font-family: var(--font-mono); font-size: 22px; font-weight: 700; color: var(--text-strong);">US$ 35.99<span style="font-family: var(--font-body); font-size: 13.5px; font-weight: 400; color: var(--text-muted);"> /mes</span></p>
+            <div style="display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin-top: 10px; padding-top: 10px; border-top: 1px solid var(--line-default);">
+              <p style="margin: 0; font-family: var(--font-mono); font-size: 15px; font-weight: 700; color: var(--text-strong);">US$ 388.99<span style="font-family: var(--font-body); font-size: 13px; font-weight: 400; color: var(--text-muted);"> /año</span></p>
+              <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--status-success); background: var(--status-success-soft); border-radius: var(--radius-sm); padding: 3px 8px;">Ahorra 10%</span>
+            </div>
+          </div>
+
+          <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px;">
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Todo lo de Pro</span></li>
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Soporte prioritario</span></li>
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Formulario de datos de cliente</span></li>
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Exportaciones y reportes ampliados</span></li>
+          </ul>
+
+          <div style="margin-top: auto;">
+            <a href="https://canalfact.blaisetechnology.com/configuracion/plan/elegir/?utm_source=blaise&amp;utm_medium=website&amp;utm_campaign=canalfact_subpage&amp;utm_content=plan_business" style="text-decoration: none;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="secondary" size="md" hint-size="100%,40px">Seleccionar plan</x-import>
+            </a>
+          </div>
+        </div>
+      </x-import>
+
+      <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n28 }}" hint-size="100%,430px">
+        <div style="display: flex; flex-direction: column; gap: 18px; height: 100%;">
+          <div>
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--text-strong);">A medida</p>
+            </div>
+            <p style="margin: 6px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Más de 550 facturas mensuales</p>
+          </div>
+
+          <div style="background: var(--surface-sunken); border-radius: var(--radius-md); padding: 16px;">
+            <p style="margin: 10px 0 0; font-size: 12.5px; color: var(--text-faint);">Precio por factura on demand</p>
+          </div>
+
+          <ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 9px;">
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Integraciones con sistemas contables</span></li>
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Planes y soporte a la medida</span></li>
+          <li style="display: flex; gap: 10px; align-items: flex-start;"><x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import><span style="font-size: 14.5px; line-height: 1.5; color: var(--text-muted);">Volumen sin límite definido</span></li>
+          </ul>
+
+          <div style="margin-top: auto;">
+            <a href="mailto:contact@blaisetechnology.com?subject=Plan%20a%20medida%20canalfact" style="text-decoration: none;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="secondary" size="md" hint-size="100%,40px">Contáctanos</x-import>
+            </a>
+          </div>
+        </div>
+      </x-import>
+    </div>
+
+  </section>
+
+  <section style="background: var(--surface-inverse);">
+    <div style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px);">
+      <div data-reveal="single">
+      <p style="margin: 0 0 14px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-teal);">Empieza ahora</p>
+      <h2 style="margin: 0 0 16px; font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; letter-spacing: -0.028em; color: var(--text-on-inverse); text-wrap: pretty;">Conecta tu negocio. Simplifica con canalfact.</h2>
+      <p style="margin: 0 0 28px; max-width: 620px; font-size: clamp(15.5px, 1.4vw, 17px); line-height: 1.62; color: var(--text-on-inverse-muted); text-wrap: pretty;">Desde la web, conectando tu programa o con soporte en Panamá. Para empresas, pymes y emprendedores.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+        <a href="https://canalfact.blaisetechnology.com/accounts/signup/?utm_source=blaise&amp;utm_medium=website&amp;utm_campaign=canalfact_subpage&amp;utm_content=closing_cta" style="text-decoration: none;">
+          <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="gradient" size="lg" hint-size="auto,48px">Registrar gratis</x-import>
+        </a>
+        <a href="mailto:contact@blaisetechnology.com?subject=Solicitud%20de%20informaci%C3%B3n%20canalfact" style="text-decoration: none;">
+          <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="inverse" size="lg" hint-size="auto,48px">Solicitar información</x-import>
+        </a>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background: var(--surface-panel); border-top: 1px solid var(--line-default);">
+    <div style="max-width: 1160px; margin: 0 auto; padding: clamp(32px,4vw,48px) clamp(20px,4vw,32px);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; margin-bottom: 32px;">
+        <div>
+          <p style="margin: 0 0 12px; font-family: var(--font-display); font-weight: 700; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-strong);">Producto</p>
+          <ul style="margin: 0; padding: 0; list-style: none;">
+            <li style="margin-bottom: 8px;"><a href="https://canalfact.blaisetechnology.com/" style="font-size: 15px; color: var(--text-muted);">Sitio web</a></li>
+            <li style="margin-bottom: 8px;"><a href="https://canalfact.blaisetechnology.com/dashboard/" style="font-size: 15px; color: var(--text-muted);">Plataforma</a></li>
+            <li><a href="https://canalfact.blaisetechnology.com/docs/" style="font-size: 15px; color: var(--text-muted);">Documentación</a></li>
+          </ul>
+        </div>
+        <div>
+          <p style="margin: 0 0 12px; font-family: var(--font-display); font-weight: 700; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-strong);">Legal</p>
+          <ul style="margin: 0; padding: 0; list-style: none;">
+            <li style="margin-bottom: 8px;"><a href="https://canalfact.blaisetechnology.com/terms/" style="font-size: 15px; color: var(--text-muted);">Términos y Condiciones</a></li>
+            <li style="margin-bottom: 8px;"><a href="https://canalfact.blaisetechnology.com/privacy/" style="font-size: 15px; color: var(--text-muted);">Política de Privacidad</a></li>
+            <li><a href="https://canalfact.blaisetechnology.com/security/" style="font-size: 15px; color: var(--text-muted);">Política de Seguridad</a></li>
+          </ul>
+        </div>
+        <div>
+          <p style="margin: 0 0 12px; font-family: var(--font-display); font-weight: 700; font-size: 14px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-strong);">Contacto</p>
+          <ul style="margin: 0; padding: 0; list-style: none;">
+            <li style="margin-bottom: 8px;"><a href="mailto:support@canalfact.blaisetechnology.com" style="font-size: 15px; color: var(--text-muted);">Soporte Técnico</a></li>
+            <li style="margin-bottom: 8px;"><a href="mailto:contact@blaisetechnology.com" style="font-size: 15px; color: var(--text-muted);">Contacto Comercial</a></li>
+            <li><a href="https://canalfact.blaisetechnology.com/faq/" style="font-size: 15px; color: var(--text-muted);">Preguntas Frecuentes</a></li>
+          </ul>
+        </div>
+      </div>
+      <div style="padding-top: 24px; border-top: 1px solid var(--line-default); display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <img src="https://blaise-public-files.s3.us-east-1.amazonaws.com/canalfact/assets/logo_canal_fact_dark_bg.svg" alt="canalfact" style="height: 15px; filter: invert(1) brightness(0.25);" onerror="this.replaceWith(Object.assign(document.createElement('span'),{textContent:'canalfact',style:'font-family:var(--font-display);font-weight:800;font-size:15px;letter-spacing:-0.02em;color:var(--text-strong)'}))" />
+          <span style="font-size: 12.5px; color: var(--text-faint);">un producto de</span>
+          <img data-logo-light src="assets/blaise-logo.svg" alt="Blaise" style="height: 22px; width: auto; display: block;"><img data-logo-dark src="assets/blaise-logo-white.svg" alt="Blaise" style="height: 22px; width: auto;">
+        </div>
+        <p style="margin: 0; font-size: 13px; color: var(--text-muted);">© 2026 canalfact — Facturación electrónica para Panamá.</p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    this.setupReveal();
+  }
+  setupReveal() {
+    const root = document;
+    const els = root.querySelectorAll('[data-reveal]');
+    if (!els.length) {
+      if (this._revealTries === undefined) this._revealTries = 0;
+      if (this._revealTries++ < 60) requestAnimationFrame(() => this.setupReveal());
+      return;
+    }
+    if (this._revealDone) return;
+    this._revealDone = true;
+    if (this.props && this.props.revealOnScroll === false) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting || entry.boundingClientRect.top < window.innerHeight) {
+          entry.target.classList.add('cf-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) return;
+      el.classList.add('cf-armed');
+      io.observe(el);
+    });
+  }
+  renderVals() {
+    return {
+      n14: 14,
+      n16: 16,
+      n18: 18,
+      n20: 20,
+      n22: 22,
+      n26: 26,
+      n28: 28,
+      n32: 32,
+      true: true
+    };
+  }
+}
+
+</script>
+</body>
+</html>

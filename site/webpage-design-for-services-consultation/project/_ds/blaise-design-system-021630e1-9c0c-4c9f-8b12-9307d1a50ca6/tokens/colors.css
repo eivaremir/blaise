@@ -1,0 +1,20 @@
+:root{
+/* ---- Brand ramps ---- */
+--teal-50:#edfbf6;--teal-100:#d3f4e9;--teal-200:#a9e9d6;--teal-300:#5fd4b7;--teal-400:#34c4a4;--teal-500:#16a888;--teal-600:#0f8a70;
+--sky-50:#eef6fd;--sky-100:#d6eaf9;--sky-200:#a9d2f0;--sky-300:#50a0d5;--sky-400:#3183bd;--sky-500:#22679a;--sky-600:#1a4f76;
+--blue-50:#eef1fe;--blue-100:#dbe2fd;--blue-200:#b4c2fb;--blue-300:#7d92f7;--blue-400:#446bf4;--blue-500:#3f62e0;--blue-600:#2f4bb4;--blue-700:#22378a;
+/* ---- Neutrals (navy-tinted) ---- */
+--navy-900:#0d1526;--navy-800:#16203a;--navy-700:#26314f;--navy-600:#3c4a6b;--navy-500:#5b6a8c;--navy-400:#8492ae;--navy-300:#b3bdd1;--navy-200:#dfe6f3;--navy-100:#eef2f9;--navy-50:#f4f7fb;--white:#ffffff;
+/* ---- Semantic ---- */
+--green-500:#10996f;--green-100:#dcf3e9;--red-500:#dc3f4a;--red-100:#fbe1e3;--amber-500:#e0a01f;--amber-100:#fbeecf;
+/* ---- Brand aliases (the five roles from the brand sheet) ---- */
+--brand-teal:#5fd4b7;--brand-sky:#50a0d5;--brand-blue:#446bf4;--brand-accent:#3f62e0;
+--brand-gradient:linear-gradient(90deg,#5fd4b7 0%,#50a0d5 50%,#446bf4 100%); /* @kind other */
+--brand-gradient-diag:linear-gradient(135deg,#5fd4b7 0%,#50a0d5 48%,#446bf4 100%); /* @kind other */
+/* ---- Semantic surface / text / line ---- */
+--surface-page:#f4f7fb;--surface-panel:#ffffff;--surface-sunken:#eef2f9;--surface-inverse:#16203a;--surface-inverse-raised:#26314f;--surface-accent-soft:#eef1fe;--surface-teal-soft:#edfbf6;
+--text-strong:#16203a;--text-body:#16203a;--text-muted:#5b6a8c;--text-faint:#8492ae;--text-on-brand:#ffffff;--text-on-inverse:#ffffff;--text-on-inverse-muted:#b3bdd1;--text-link:#3f62e0;--text-link-hover:#2f4bb4;
+--line-subtle:#eef2f9;--line-default:#dfe6f3;--line-strong:#b3bdd1;--line-inverse:#2c3757;
+--action-primary:#446bf4;--action-primary-hover:#3f62e0;--action-primary-active:#2f4bb4;--action-secondary-bg:#ffffff;--action-secondary-hover:#f4f7fb;--focus-ring:#7d92f7;
+--status-success:#10996f;--status-success-soft:#dcf3e9;--status-error:#dc3f4a;--status-error-soft:#fbe1e3;--status-warning:#e0a01f;--status-warning-soft:#fbeecf;--status-info:#50a0d5;--status-info-soft:#eef6fd;
+}

@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/colors.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/typography.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/radius.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/shadow.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/motion.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/base.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/styles.css">
+<script src="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/_ds_bundle.js"></script>
+<style>
+  :root { --dot-cycle: 15s; --dot-typing: flex; }
+  body { margin: 0; background: var(--surface-page); color: var(--text-body); font-family: var(--font-body); }
+  a { color: var(--text-link); text-decoration: none; }
+  a:hover { color: var(--text-link-hover); text-decoration: underline; }
+  @keyframes dot-pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+  @keyframes cf-fade-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+  .dot-msg { transition: opacity 0.38s var(--ease-standard), transform 0.38s var(--ease-standard); }
+  .dot-typing { display: var(--dot-typing); visibility: hidden; }
+  [data-demo].dot-live .dot-msg { opacity: 0; transform: translateY(8px); }
+  [data-demo].dot-live .dot-msg.dot-shown { opacity: 1; transform: translateY(0); }
+  [data-demo].dot-live .dot-typing { visibility: hidden; }
+  [data-demo].dot-live .dot-typing.dot-shown { visibility: visible; }
+  .dot-dot { animation: dot-pulse 1.1s var(--ease-standard) infinite; }
+  .dot-dot:nth-child(2) { animation-delay: 0.18s; }
+  .dot-dot:nth-child(3) { animation-delay: 0.36s; }
+  [data-reveal="single"].cf-armed { opacity: 0; }
+  [data-reveal="single"].cf-armed.cf-in { animation: cf-fade-up 0.55s var(--ease-standard) forwards; }
+  [data-reveal="stagger"].cf-armed > *, [data-reveal="stagger"].cf-armed > * > * { opacity: 0; }
+  [data-reveal="stagger"].cf-armed.cf-in > *, [data-reveal="stagger"].cf-armed.cf-in > * > * { animation: cf-fade-up 0.5s var(--ease-standard) forwards; }
+  [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(2), [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(2) > * { animation-delay: 0.06s; }
+  [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(3), [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(3) > * { animation-delay: 0.12s; }
+  [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(4), [data-reveal="stagger"].cf-armed.cf-in > *:nth-child(4) > * { animation-delay: 0.18s; }
+  @media (prefers-reduced-motion: reduce) {
+    .dot-msg, .dot-dot { animation: none !important; opacity: 1 !important; transform: none !important; transition: none !important; }
+    .dot-typing { display: none !important; }
+    [data-reveal], [data-reveal] > * { opacity: 1 !important; animation: none !important; }
+  }
+  [data-logo-dark] { display: none; }
+  @media (prefers-color-scheme: dark) {
+    [data-logo-light] { display: none !important; }
+    [data-logo-dark] { display: block !important; }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --surface-page: #0d1526;
+      --surface-panel: #16203a;
+      --surface-sunken: #1b2540;
+      --surface-inverse: #070d1a;
+      --surface-inverse-raised: #1b2540;
+      --surface-accent-soft: #1d2647;
+      --surface-teal-soft: #10251f;
+      --text-strong: #ffffff;
+      --text-body: #e4eaf7;
+      --text-muted: #b3bdd1;
+      --text-faint: #8492ae;
+      --text-on-inverse: #ffffff;
+      --text-on-inverse-muted: #b3bdd1;
+      --text-link: #7d92f7;
+      --text-link-hover: #b4c2fb;
+      --line-subtle: #1e2942;
+      --line-default: #2c3757;
+      --line-strong: #3c4a6b;
+      --line-inverse: #26314f;
+      --action-primary: #446bf4;
+      --action-primary-hover: #5a7df6;
+      --action-primary-active: #9aabf9;
+      --action-secondary-bg: #16203a;
+      --action-secondary-hover: #1e2942;
+      --sky-400: #7ec2ef;
+      --sky-300: #8fd0f5;
+      --status-success: #34c4a4;
+      --status-error: #f0737c;
+      --status-success-soft: #123026;
+      --status-error-soft: #3a1b1f;
+      --status-warning: #e8b53c;
+      --status-warning-soft: #362a12;
+      --status-info: #7ec2ef;
+      --status-info-soft: #16293d;
+      --brand-teal: #5fd4b7;
+      --shadow-inset-line: inset 0 -1px 0 #2c3757;
+      --shadow-xs: 0 1px 2px rgba(0,0,0,0.5);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.45);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+      --shadow-lg: 0 10px 28px rgba(0,0,0,0.55);
+      --shadow-xl: 0 20px 50px rgba(0,0,0,0.6);
+    }
+    img[alt="canalfact"] { filter: none !important; }
+  }
+</style>
+</helmet>
+
+<div style="background: var(--surface-page); font-family: var(--font-body); color: var(--text-body); min-height: 100%;">
+
+  <div style="position: sticky; top: 0; z-index: 30;">
+  <nav aria-label="Productos Blaise" style=" background: var(--surface-sunken); border-bottom: 1px solid var(--line-default);">
+    <div style="max-width: 1160px; margin: 0 auto; padding: 9px clamp(20px,4vw,32px); display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 14px; min-width: 0;">
+        <a href="Home%20Page.dc.html" style="display: flex; align-items: center; text-decoration: none; color: var(--text-strong);">
+          <img data-logo-light src="assets/blaise-logo.svg" alt="Blaise" style="height: 22px; width: auto; display: block;"><img data-logo-dark src="assets/blaise-logo-white.svg" alt="Blaise" style="height: 22px; width: auto;">
+        </a>
+        <span style="width: 1px; height: 18px; background: var(--line-default);"></span>
+        <div style="display: flex; align-items: center; gap: 2px; flex-wrap: wrap;">
+          <a href="Home%20Page.dc.html" style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-md); font-family: var(--font-display); font-weight: 600; font-size: 13.5px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; color: var(--text-muted); background: transparent;" style-hover="background: var(--surface-panel); color: var(--text-strong);">Inicio</a>
+          <a href="Services%20Page.dc.html" style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-md); font-family: var(--font-display); font-weight: 600; font-size: 13.5px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; color: var(--text-muted); background: transparent;" style-hover="background: var(--surface-panel); color: var(--text-strong);">Servicios</a>
+          <a href="canalfact%20Subpage.dc.html" style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-md); font-family: var(--font-display); font-weight: 600; font-size: 13.5px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; color: var(--text-muted); background: transparent;" style-hover="background: var(--surface-panel); color: var(--text-strong);">canalfact</a>
+          <a href="Dot%20Page.dc.html" style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-md); font-family: var(--font-display); font-weight: 700; font-size: 13.5px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; color: var(--text-strong); background: var(--surface-panel); box-shadow: var(--shadow-xs);" style-hover="background: var(--surface-panel); color: var(--text-strong);">Dot</a>
+          <a href="Iris%20Page.dc.html" style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-md); font-family: var(--font-display); font-weight: 600; font-size: 13.5px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; color: var(--text-muted); background: transparent;" style-hover="background: var(--surface-panel); color: var(--text-strong);">Iris</a>
+        </div>
+      </div>
+      <a href="mailto:contact@blaisetechnology.com?subject=Consulta%201:1%20gratuita" style="font-size: 12.5px; color: var(--text-link); text-decoration: none; white-space: nowrap;" style-hover="text-decoration: underline;">Consulta 1:1 gratuita</a>
+    </div>
+  </nav>
+
+  <header style=" background: var(--surface-panel); border-bottom: 1px solid var(--line-default); box-shadow: var(--shadow-inset-line);">
+    <div style="max-width: 1160px; margin: 0 auto; padding: 14px clamp(20px,4vw,32px); display: flex; align-items: center; gap: 20px; flex-wrap: wrap; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <svg viewBox="33 219 978 364" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dot" style="height: 21px; width: auto; color: var(--text-strong); display: block;"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTpjODhhYTM2NC0zZjI0LTQxMTMtYjY1NS1kOGFkYWIwNDUxMjEAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaDf0psjaiUfHIxLpgNOHWZYAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDoyY2Q2MWI5MC0yMzVkLTQ4NmEtYjRiMC03ODIwNGQ4MzBhODBscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNo9kvfZnOpIRqI21YiM3IB0gAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFgg8iNv5HLAx1mxWjyP8vgzFAlWJ7ruETbGig6hUIcVuSOkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaANrntc/ZpFtgizSk/RzeGMAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCBz+VjgMXX2HdpsgGzPK/vjvP5nC62VqRn649wWqCnDCGRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBioZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOmM4OGFhMzY0LTNmMjQtNDExMy1iNjU1LWQ4YWRhYjA0NTEyMS9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjdkZmY1ZDQxLTdhYjUtNDgzNi1hODM5LWI1MThmMDMzYWU1M3JjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCDyI2/kcsDHWbFaPI/y+DMUCVYnuu4RNsaKDqFQhxW5I6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggQR8czC1bN7Sk8naH5/u7ornnhY0kfwYrkXaR/SsUfm6iY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg+hbrnhEpYvBit3z9p19T4Cmi7TG0NRrOX0iXtPzUh6d0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQLTij3P/K0DZlN8rNF73HpwlV23Qnr7ucPVPmLGIhBRr14EqW6NUA6wIiRJAW2bUwChYk6Ak8KixgL1PMiE0xzU=</c2pa:manifest></metadata><path fill="currentColor" d="M36.5 573V223H151.5C188.833 223 221.167 230.5 248.5 245.5C275.833 260.5 297 281.167 312 307.5C327 333.833 334.5 364 334.5 398C334.5 432 327 462.167 312 488.5C297 514.833 275.833 535.5 248.5 550.5C221.167 565.5 188.833 573 151.5 573H36.5ZM96 520.5H152C175.667 520.5 196.667 515.667 215 506C233.667 496 248.333 481.833 259 463.5C269.667 444.833 275 423 275 398C275 372.667 269.667 350.833 259 332.5C248.333 314.167 233.667 300.167 215 290.5C196.667 280.5 175.667 275.5 152 275.5H96V520.5ZM508.539 579C482.206 579 458.872 573.167 438.539 561.5C418.206 549.5 402.039 533.5 390.039 513.5C378.372 493.167 372.539 470.5 372.539 445.5C372.539 420.5 378.372 398 390.039 378C402.039 357.667 418.206 341.667 438.539 330C458.872 318 482.206 312 508.539 312C534.539 312 557.706 318 578.039 330C598.372 341.667 614.372 357.5 626.039 377.5C638.039 397.5 644.039 420.167 644.039 445.5C644.039 470.5 638.039 493.167 626.039 513.5C614.372 533.5 598.372 549.5 578.039 561.5C557.706 573.167 534.539 579 508.539 579ZM508.539 530C524.206 530 537.872 526.333 549.539 519C561.206 511.333 570.206 501.167 576.539 488.5C582.872 475.833 586.039 461.5 586.039 445.5C586.039 429.833 582.872 415.667 576.539 403C570.206 390 561.206 379.833 549.539 372.5C537.872 364.833 524.206 361 508.539 361C492.539 361 478.706 364.833 467.039 372.5C455.706 379.833 446.706 389.833 440.039 402.5C433.706 415.167 430.539 429.5 430.539 445.5C430.539 461.167 433.706 475.5 440.039 488.5C446.706 501.167 455.706 511.333 467.039 519C478.706 526.333 492.539 530 508.539 530ZM776.797 573C754.13 573 736.297 566.5 723.297 553.5C710.63 540.5 704.297 522.833 704.297 500.5V254H761.297V498C761.297 505.667 763.63 512 768.297 517C772.964 521.667 779.13 524 786.797 524H840.297V573H776.797ZM660.297 367V318H840.797V367H660.297Z"></path><path d="M955.367 324C942.709 324 931.316 318.987 921.19 308.962C911.063 298.937 906 287.658 906 275.127C906 260.924 911.063 249.228 921.19 240.038C931.316 230.013 942.709 225 955.367 225C969.713 225 981.527 230.013 990.81 240.038C1000.94 249.228 1006 260.924 1006 275.127C1006 283.481 1003.47 291.418 998.405 298.937C994.186 306.456 988.278 312.304 980.684 316.481C973.089 321.494 964.65 324 955.367 324Z" fill="#A9F413"></path><path d="M955.367 448.5C942.709 448.5 931.316 443.487 921.19 433.462C911.063 423.437 906 412.158 906 399.627C906 385.424 911.063 373.728 921.19 364.538C931.316 354.513 942.709 349.5 955.367 349.5C969.713 349.5 981.527 354.513 990.81 364.538C1000.94 373.728 1006 385.424 1006 399.627C1006 407.981 1003.47 415.918 998.405 423.437C994.186 430.956 988.278 436.804 980.684 440.981C973.089 445.994 964.65 448.5 955.367 448.5Z" fill="#558CF0"></path><path d="M955.367 573C942.709 573 931.316 567.987 921.19 557.962C911.063 547.937 906 536.658 906 524.127C906 509.924 911.063 498.228 921.19 489.038C931.316 479.013 942.709 474 955.367 474C969.713 474 981.527 479.013 990.81 489.038C1000.94 498.228 1006 509.924 1006 524.127C1006 532.481 1003.47 540.418 998.405 547.937C994.186 555.456 988.278 561.304 980.684 565.481C973.089 570.494 964.65 573 955.367 573Z" fill="#F62F2F"></path></svg>
+        <span style="font-size: 12.5px; color: var(--text-faint); border-left: 1px solid var(--line-default); padding-left: 12px; display: flex; align-items: center; gap: 6px;">un producto de <img data-logo-light src="assets/blaise-logo.svg" alt="Blaise" style="height: 18px; width: auto; display: inline-block; vertical-align: middle;"><img data-logo-dark src="assets/blaise-logo-white.svg" alt="Blaise" style="height: 18px; width: auto; vertical-align: middle;"></span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+        <a href="#casos" style="font-size: 14.5px; color: var(--text-muted);">Casos de uso</a>
+        <a href="#como" style="font-size: 14.5px; color: var(--text-muted);">Cómo lo construimos</a>
+        <a href="#agendar" style="text-decoration: none;">
+          <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="primary" size="sm" hint-size="auto,32px">Agendar llamada</x-import>
+        </a>
+      </div>
+    </div>
+  </header>
+  </div>
+
+  <section style="position: relative; background: var(--surface-inverse); overflow: hidden;">
+    <span style="position: absolute; inset-inline: 0; top: 0; height: 4px; background: var(--brand-gradient);"></span>
+    <div style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: clamp(32px,4vw,48px); align-items: start;">
+      <div>
+        <p style="margin: 0 0 16px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-teal);">Dot · Agentes de servicio con IA</p>
+        <h1 style="margin: 0 0 20px; font-family: var(--font-display); font-weight: 800; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.08; letter-spacing: -0.028em; color: var(--text-on-inverse); text-wrap: pretty;">Atiende a tus clientes 24/7 con un agente que conoce tu negocio</h1>
+        <p style="margin: 0 0 32px; max-width: 620px; font-size: clamp(16px, 1.5vw, 18px); line-height: 1.62; color: var(--text-on-inverse-muted); text-wrap: pretty;">Diseñamos, construimos y conectamos tu agente de servicio al cliente con modelos de lenguaje. Responde las preguntas repetitivas al instante, consulta tus sistemas y pasa la conversación a una persona cuando hace falta.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+          <a href="#agendar" style="text-decoration: none;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="gradient" size="lg" hint-size="auto,48px">Agendar llamada de diseño</x-import>
+          </a>
+          <a href="#casos" style="text-decoration: none;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="inverse" size="lg" hint-size="auto,48px">Ver casos de uso</x-import>
+          </a>
+        </div>
+        <p style="margin: 20px 0 0; font-size: 14px; color: var(--text-on-inverse-muted);">30 minutos · sin costo · salimos con el alcance de tu agente definido</p>
+      </div>
+
+      <div style="background: var(--surface-inverse-raised); border: 1px solid var(--line-inverse); border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); overflow: hidden;">
+        <div style="display: flex; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--line-inverse);">
+          <span style="width: 30px; height: 30px; border-radius: 999px; background: var(--action-primary); color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 13px; display: flex; align-items: center; justify-content: center;">D</span>
+          <div style="margin-right: auto;">
+            <p style="margin: 0; font-family: var(--font-display); font-weight: 600; font-size: 14.5px; color: var(--text-on-inverse);">Dot · Agente de soporte</p>
+            <p style="margin: 0; font-size: 12px; color: var(--brand-teal);">En línea · responde en segundos</p>
+          </div>
+          <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-on-inverse-muted);">WhatsApp</span>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 12px; padding: 20px 18px; min-height: 360px; justify-content: flex-start;" data-demo="hero">
+          <div class="dot-msg" style="align-self: flex-end; max-width: 78%; background: rgba(255,255,255,0.10); border-radius: 14px 14px 4px 14px; padding: 11px 14px;">
+            <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--text-on-inverse);">Hola, compré ayer y quiero saber cuándo llega mi pedido</p>
+          </div>
+          <div class="dot-typing" style="align-self: flex-start; gap: 5px; align-items: center; background: var(--action-primary); border-radius: 14px 14px 14px 4px; padding: 13px 14px;">
+            <span class="dot-dot" style="width: 6px; height: 6px; border-radius: 999px; background: #fff;"></span>
+            <span class="dot-dot" style="width: 6px; height: 6px; border-radius: 999px; background: #fff;"></span>
+            <span class="dot-dot" style="width: 6px; height: 6px; border-radius: 999px; background: #fff;"></span>
+          </div>
+          <div class="dot-msg" data-agent="1" style="align-self: flex-start; max-width: 82%; background: var(--action-primary); border-radius: 14px 14px 14px 4px; padding: 11px 14px;">
+            <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: #fff;">¡Claro! Tu pedido <span style="font-family: var(--font-mono); font-size: 13.5px;">#48192</span> salió del almacén esta mañana y llega mañana entre 9am y 1pm.</p>
+          </div>
+          <div class="dot-msg" style="align-self: flex-end; max-width: 78%; background: rgba(255,255,255,0.10); border-radius: 14px 14px 4px 14px; padding: 11px 14px;">
+            <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--text-on-inverse);">¿Puedo cambiar la dirección de entrega?</p>
+          </div>
+          <div class="dot-msg" data-agent="1" style="align-self: flex-start; max-width: 82%; background: var(--action-primary); border-radius: 14px 14px 14px 4px; padding: 11px 14px;">
+            <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: #fff;">Sí, hasta las 6pm de hoy. Escríbeme la nueva dirección y la actualizo en el sistema.</p>
+          </div>
+          <div class="dot-msg" style="align-self: center; display: flex; align-items: center; gap: 8px;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check-circle" size="{{ n15 }}" color="var(--brand-teal)" hint-size="15px,15px"></x-import>
+            <span style="font-size: 12.5px; color: var(--brand-teal);">Resuelto sin agente humano · 41 segundos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px);">
+    <div data-reveal="single">
+      <p style="margin: 0 0 14px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sky-400);">Qué es Dot</p>
+      <h2 style="margin: 0 0 18px; font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.14; letter-spacing: -0.026em; color: var(--text-strong); text-wrap: pretty;">No es un chatbot de árbol de opciones</h2>
+      <p style="margin: 0 0 40px; max-width: 760px; font-size: clamp(15.5px, 1.4vw, 17px); line-height: 1.62; color: var(--text-muted); text-wrap: pretty;">Dot es un agente construido sobre modelos de lenguaje que entiende cómo escriben tus clientes, consulta tus sistemas antes de responder y sabe cuándo pasar la conversación a tu equipo. Lo diseñamos con tu información, tu tono y tus reglas de negocio.</p>
+    </div>
+
+    <div data-reveal="stagger" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;">
+      <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n28 }}" hint-size="100%,200px">
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <span style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--surface-accent-soft); display: flex; align-items: center; justify-content: center;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="message-circle" size="{{ n22 }}" color="var(--sky-400)" hint-size="22px,22px"></x-import>
+          </span>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17.5px; color: var(--text-strong);">Conversa como tu equipo</p>
+            <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);">Entiende mensajes con errores, audios transcritos y preguntas sueltas. Responde en el tono que defines tú.</p>
+          </div>
+        </div>
+      </x-import>
+
+      <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n28 }}" hint-size="100%,200px">
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <span style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--surface-accent-soft); display: flex; align-items: center; justify-content: center;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="plug" size="{{ n22 }}" color="var(--sky-400)" hint-size="22px,22px"></x-import>
+          </span>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17.5px; color: var(--text-strong);">Consulta tus sistemas</p>
+            <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);">Lo conectamos a tu inventario, tu CRM, tu sistema de envíos o tu agenda para que responda con datos reales.</p>
+          </div>
+        </div>
+      </x-import>
+
+      <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n28 }}" hint-size="100%,200px">
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <span style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--surface-accent-soft); display: flex; align-items: center; justify-content: center;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="users" size="{{ n22 }}" color="var(--sky-400)" hint-size="22px,22px"></x-import>
+          </span>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17.5px; color: var(--text-strong);">Sabe cuándo pasar a un humano</p>
+            <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);">Reclamos, casos sensibles o cualquier tema que definas se transfieren con todo el contexto de la conversación.</p>
+          </div>
+        </div>
+      </x-import>
+
+      <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" interactive="{{ true }}" padding="{{ n28 }}" hint-size="100%,200px">
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <span style="width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--surface-accent-soft); display: flex; align-items: center; justify-content: center;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="bar-chart-3" size="{{ n22 }}" color="var(--sky-400)" hint-size="22px,22px"></x-import>
+          </span>
+          <div style="display: flex; flex-direction: column; gap: 6px;">
+            <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17.5px; color: var(--text-strong);">Aprende de lo que preguntan</p>
+            <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);">Cada mes revisamos las conversaciones reales y ajustamos el agente con lo que tus clientes realmente preguntan.</p>
+          </div>
+        </div>
+      </x-import>
+    </div>
+  </section>
+
+  <section id="casos" style="background: var(--surface-panel); border-top: 1px solid var(--line-default); border-bottom: 1px solid var(--line-default);">
+    <div style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px);">
+      <div data-reveal="single">
+        <p style="margin: 0 0 14px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sky-400);">Casos de uso</p>
+        <h2 style="margin: 0 0 18px; font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.14; letter-spacing: -0.026em; color: var(--text-strong); text-wrap: pretty;">Cuatro agentes que ya sabemos construir</h2>
+        <p style="margin: 0 0 56px; max-width: 760px; font-size: clamp(15.5px, 1.4vw, 17px); line-height: 1.62; color: var(--text-muted); text-wrap: pretty;">Cada demo muestra una conversación real del tipo que atiende el agente. El tuyo se diseña con tus reglas, tus sistemas y tu catálogo.</p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: clamp(48px,6vw,72px);">
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(28px,4vw,48px); align-items: center;">
+          <div>
+            <p style="margin: 0 0 12px; font-family: var(--font-mono); font-size: 13px; color: var(--sky-400);">Caso 01 · Comercio y e-commerce</p>
+            <h3 style="margin: 0 0 14px; font-family: var(--font-display); font-weight: 700; font-size: clamp(21px, 2.2vw, 26px); line-height: 1.22; letter-spacing: -0.02em; color: var(--text-strong); text-wrap: pretty;">Estado de pedidos, cambios y devoluciones</h3>
+            <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.62; color: var(--text-muted); text-wrap: pretty;">El 70% de los mensajes de una tienda son "¿dónde está mi pedido?" y "¿tienen talla M?". El agente los resuelve consultando tu inventario y tu sistema de envíos.</p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; gap: 10px; align-items: flex-start;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import>
+                <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-muted);">Rastreo de pedidos en tiempo real</span>
+              </div>
+              <div style="display: flex; gap: 10px; align-items: flex-start;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import>
+                <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-muted);">Disponibilidad y precios desde tu catálogo</span>
+              </div>
+              <div style="display: flex; gap: 10px; align-items: flex-start;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import>
+                <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-muted);">Inicio de devoluciones sin tocar a tu equipo</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: var(--surface-panel); border: 1px solid var(--line-default); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); overflow: hidden;">
+            <div style="display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--line-default); background: var(--surface-sunken);">
+              <span style="width: 26px; height: 26px; border-radius: 999px; background: var(--action-primary); color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 12px; display: flex; align-items: center; justify-content: center;">D</span>
+              <p style="margin: 0; margin-right: auto; font-family: var(--font-display); font-weight: 600; font-size: 13.5px; color: var(--text-strong);">Tienda · chat web</p>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-faint);">24/7</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 11px; padding: 18px 16px; min-height: 320px; justify-content: flex-start; background: var(--surface-page);" data-demo="case">
+              <div class="dot-msg" style="align-self: flex-end; max-width: 80%; background: var(--surface-sunken); border: 1px solid var(--line-subtle); border-radius: 14px 14px 4px 14px; padding: 10px 13px;">
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--text-body);">tienen la chaqueta azul en talla M?</p>
+              </div>
+              <div class="dot-msg" data-agent="1" style="align-self: flex-start; max-width: 84%; background: var(--action-primary); border-radius: 14px 14px 14px 4px; padding: 10px 13px;">
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: #fff;">Sí, quedan 3 en talla M en la sucursal de Costa del Este y 8 en bodega. B/.89.00 con envío gratis.</p>
+              </div>
+              <div class="dot-msg" style="align-self: flex-end; max-width: 80%; background: var(--surface-sunken); border: 1px solid var(--line-subtle); border-radius: 14px 14px 4px 14px; padding: 10px 13px;">
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--text-body);">y si no me queda la puedo devolver?</p>
+              </div>
+              <div class="dot-msg" data-agent="1" style="align-self: flex-start; max-width: 84%; background: var(--action-primary); border-radius: 14px 14px 14px 4px; padding: 10px 13px;">
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: #fff;">Tienes 30 días para cambio o devolución. Te genero la etiqueta de retorno desde aquí cuando la necesites.</p>
+              </div>
+              <div class="dot-msg" style="align-self: center; display: flex; align-items: center; gap: 8px;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="plug" size="{{ n15 }}" color="var(--status-success)" hint-size="15px,15px"></x-import>
+                <span style="font-size: 12.5px; color: var(--status-success);">Consultó inventario y política de devoluciones</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(28px,4vw,48px); align-items: center;">
+          <div style="background: var(--surface-panel); border: 1px solid var(--line-default); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); overflow: hidden;">
+            <div style="display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--line-default); background: var(--surface-sunken);">
+              <span style="width: 26px; height: 26px; border-radius: 999px; background: var(--action-primary); color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 12px; display: flex; align-items: center; justify-content: center;">D</span>
+              <p style="margin: 0; margin-right: auto; font-family: var(--font-display); font-weight: 600; font-size: 13.5px; color: var(--text-strong);">Clínica · WhatsApp</p>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-faint);">Agenda</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 11px; padding: 18px 16px; min-height: 320px; justify-content: flex-start; background: var(--surface-page);" data-demo="case">
+              <div class="dot-msg" style="align-self: flex-end; max-width: 80%; background: var(--surface-sunken); border: 1px solid var(--line-subtle); border-radius: 14px 14px 4px 14px; padding: 10px 13px;">
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--text-body);">Buenas, necesito mover mi cita del jueves</p>
+              </div>
+              <div class="dot-msg" data-agent="1" style="align-self: flex-start; max-width: 84%; background: var(--action-primary); border-radius: 14px 14px 14px 4px; padding: 10px 13px;">
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: #fff;">Tienes cita el jueves 19 a las 10:30 con la Dra. Herrera. Hay espacio el viernes 20 a las 9:00 o el lunes 23 a las 15:00.</p>
+              </div>
+              <div class="dot-msg" style="align-self: flex-end; max-width: 80%; background: var(--surface-sunken); border: 1px solid var(--line-subtle); border-radius: 14px 14px 4px 14px; padding: 10px 13px;">
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--text-body);">el viernes a las 9 está bien</p>
+              </div>
+              <div class="dot-msg" data-agent="1" style="align-self: flex-start; max-width: 84%; background: var(--action-primary); border-radius: 14px 14px 14px 4px; padding: 10px 13px;">
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: #fff;">Listo, reagendada para el viernes 20 a las 9:00. Te envío un recordatorio el día anterior.</p>
+              </div>
+              <div class="dot-msg" style="align-self: center; display: flex; align-items: center; gap: 8px;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check-circle" size="{{ n15 }}" color="var(--status-success)" hint-size="15px,15px"></x-import>
+                <span style="font-size: 12.5px; color: var(--status-success);">Cita modificada en la agenda · sin llamadas</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p style="margin: 0 0 12px; font-family: var(--font-mono); font-size: 13px; color: var(--sky-400);">Caso 02 · Citas y servicios profesionales</p>
+            <h3 style="margin: 0 0 14px; font-family: var(--font-display); font-weight: 700; font-size: clamp(21px, 2.2vw, 26px); line-height: 1.22; letter-spacing: -0.02em; color: var(--text-strong); text-wrap: pretty;">Agendar, reprogramar y recordar citas</h3>
+            <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.62; color: var(--text-muted); text-wrap: pretty;">Clínicas, talleres, salones y despachos pierden horas al teléfono coordinando agenda. El agente lo hace por WhatsApp, conectado a tu calendario real.</p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; gap: 10px; align-items: flex-start;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import>
+                <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-muted);">Disponibilidad real, sin doble reserva</span>
+              </div>
+              <div style="display: flex; gap: 10px; align-items: flex-start;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import>
+                <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-muted);">Recordatorios automáticos que bajan ausencias</span>
+              </div>
+              <div style="display: flex; gap: 10px; align-items: flex-start;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import>
+                <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-muted);">Preparación previa de la cita y requisitos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(28px,4vw,48px); align-items: center;">
+          <div>
+            <p style="margin: 0 0 12px; font-family: var(--font-mono); font-size: 13px; color: var(--sky-400);">Caso 03 · Logística y transporte</p>
+            <h3 style="margin: 0 0 14px; font-family: var(--font-display); font-weight: 700; font-size: clamp(21px, 2.2vw, 26px); line-height: 1.22; letter-spacing: -0.02em; color: var(--text-strong); text-wrap: pretty;">Rastreo de envíos y coordinación de entregas</h3>
+            <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.62; color: var(--text-muted); text-wrap: pretty;">Tus clientes preguntan por su guía a toda hora. El agente consulta el estado, explica retrasos y coordina la reprogramación de la entrega sin ocupar a tu equipo de operaciones.</p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; gap: 10px; align-items: flex-start;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import>
+                <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-muted);">Estado por número de guía o de factura</span>
+              </div>
+              <div style="display: flex; gap: 10px; align-items: flex-start;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import>
+                <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-muted);">Reprogramación de entregas y ventanas horarias</span>
+              </div>
+              <div style="display: flex; gap: 10px; align-items: flex-start;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import>
+                <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-muted);">Escalamiento a operaciones cuando hay incidencia</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: var(--surface-panel); border: 1px solid var(--line-default); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); overflow: hidden;">
+            <div style="display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--line-default); background: var(--surface-sunken);">
+              <span style="width: 26px; height: 26px; border-radius: 999px; background: var(--action-primary); color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 12px; display: flex; align-items: center; justify-content: center;">D</span>
+              <p style="margin: 0; margin-right: auto; font-family: var(--font-display); font-weight: 600; font-size: 13.5px; color: var(--text-strong);">Courier · WhatsApp</p>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-faint);">Tracking</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 11px; padding: 18px 16px; min-height: 320px; justify-content: flex-start; background: var(--surface-page);" data-demo="case">
+              <div class="dot-msg" style="align-self: flex-end; max-width: 80%; background: var(--surface-sunken); border: 1px solid var(--line-subtle); border-radius: 14px 14px 4px 14px; padding: 10px 13px;">
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--text-body);">mi guía <span style="font-family: var(--font-mono); font-size: 13.5px;">PA-7741902</span> dice en tránsito desde el lunes</p>
+              </div>
+              <div class="dot-msg" data-agent="1" style="align-self: flex-start; max-width: 84%; background: var(--action-primary); border-radius: 14px 14px 14px 4px; padding: 10px 13px;">
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: #fff;">Tu paquete llegó al centro de distribución de Tocumen anoche. Está asignado a la ruta de hoy, entrega estimada entre 2pm y 6pm.</p>
+              </div>
+              <div class="dot-msg" style="align-self: flex-end; max-width: 80%; background: var(--surface-sunken); border: 1px solid var(--line-subtle); border-radius: 14px 14px 4px 14px; padding: 10px 13px;">
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--text-body);">hoy no hay nadie, puede ser mañana?</p>
+              </div>
+              <div class="dot-msg" data-agent="1" style="align-self: flex-start; max-width: 84%; background: var(--action-primary); border-radius: 14px 14px 14px 4px; padding: 10px 13px;">
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: #fff;">Reprogramada para mañana 9am–1pm. El conductor te escribe 30 minutos antes de llegar.</p>
+              </div>
+              <div class="dot-msg" style="align-self: center; display: flex; align-items: center; gap: 8px;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check-circle" size="{{ n15 }}" color="var(--status-success)" hint-size="15px,15px"></x-import>
+                <span style="font-size: 12.5px; color: var(--status-success);">Entrega reprogramada en el sistema de rutas</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(28px,4vw,48px); align-items: center;">
+          <div style="background: var(--surface-panel); border: 1px solid var(--line-default); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); overflow: hidden;">
+            <div style="display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-bottom: 1px solid var(--line-default); background: var(--surface-sunken);">
+              <span style="width: 26px; height: 26px; border-radius: 999px; background: var(--action-primary); color: #fff; font-family: var(--font-display); font-weight: 800; font-size: 12px; display: flex; align-items: center; justify-content: center;">D</span>
+              <p style="margin: 0; margin-right: auto; font-family: var(--font-display); font-weight: 600; font-size: 13.5px; color: var(--text-strong);">Servicios · chat web</p>
+              <span style="font-family: var(--font-mono); font-size: 11px; color: var(--text-faint);">Cobros</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 11px; padding: 18px 16px; min-height: 320px; justify-content: flex-start; background: var(--surface-page);" data-demo="case">
+              <div class="dot-msg" style="align-self: flex-end; max-width: 80%; background: var(--surface-sunken); border: 1px solid var(--line-subtle); border-radius: 14px 14px 4px 14px; padding: 10px 13px;">
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--text-body);">me cobraron dos veces este mes y quiero que me devuelvan</p>
+              </div>
+              <div class="dot-msg" data-agent="1" style="align-self: flex-start; max-width: 84%; background: var(--action-primary); border-radius: 14px 14px 14px 4px; padding: 10px 13px;">
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: #fff;">Veo dos cargos de B/.42.00 el 03/09. Es un caso de facturación, te paso con Ana del equipo de cobros con todo el detalle.</p>
+              </div>
+              <div class="dot-msg" style="align-self: center; max-width: 92%; background: var(--surface-accent-soft); border-radius: var(--radius-md); padding: 9px 13px;">
+                <p style="margin: 0; font-size: 13px; line-height: 1.5; color: var(--action-primary-active); text-align: center;">Transferido a Ana Quintero · Cobros · con historial adjunto</p>
+              </div>
+              <div class="dot-msg" data-agent="1" style="align-self: flex-start; max-width: 84%; background: var(--surface-panel); border: 1px solid var(--line-default); border-radius: 14px 14px 14px 4px; padding: 10px 13px;">
+                <p style="margin: 0 0 4px; font-family: var(--font-display); font-weight: 600; font-size: 12.5px; color: var(--sky-400);">Ana · Cobros</p>
+                <p style="margin: 0; font-size: 14.5px; line-height: 1.5; color: var(--text-body);">Ya vi el duplicado, proceso el reembolso hoy mismo. Llega en 3 días hábiles.</p>
+              </div>
+              <div class="dot-msg" style="align-self: center; display: flex; align-items: center; gap: 8px;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="users" size="{{ n15 }}" color="var(--status-success)" hint-size="15px,15px"></x-import>
+                <span style="font-size: 12.5px; color: var(--status-success);">Escalado a humano con contexto completo</span>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p style="margin: 0 0 12px; font-family: var(--font-mono); font-size: 13px; color: var(--sky-400);">Caso 04 · Facturación y cobros</p>
+            <h3 style="margin: 0 0 14px; font-family: var(--font-display); font-weight: 700; font-size: clamp(21px, 2.2vw, 26px); line-height: 1.22; letter-spacing: -0.02em; color: var(--text-strong); text-wrap: pretty;">Consultas de cuenta y escalamiento con contexto</h3>
+            <p style="margin: 0 0 20px; font-size: 16px; line-height: 1.62; color: var(--text-muted); text-wrap: pretty;">Los temas de dinero no se dejan a un bot solo. El agente identifica el caso, reúne la evidencia y transfiere a la persona correcta con el historial listo — nadie repite su problema dos veces.</p>
+            <div style="display: flex; flex-direction: column; gap: 10px;">
+              <div style="display: flex; gap: 10px; align-items: flex-start;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import>
+                <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-muted);">Estado de cuenta, cargos y comprobantes</span>
+              </div>
+              <div style="display: flex; gap: 10px; align-items: flex-start;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import>
+                <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-muted);">Reglas claras de qué nunca resuelve solo</span>
+              </div>
+              <div style="display: flex; gap: 10px; align-items: flex-start;">
+                <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="check" size="{{ n18 }}" color="var(--sky-400)" hint-size="18px,18px"></x-import>
+                <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-muted);">Transferencia con resumen para tu equipo</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="como" style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(32px,4vw,48px); align-items: start;">
+      <div data-reveal="single">
+        <p style="margin: 0 0 14px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sky-400);">Cómo lo construimos</p>
+        <h2 style="margin: 0 0 18px; font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.14; letter-spacing: -0.026em; color: var(--text-strong); text-wrap: pretty;">De la llamada al agente en producción</h2>
+        <p style="margin: 0; font-size: clamp(15.5px, 1.4vw, 17px); line-height: 1.62; color: var(--text-muted); text-wrap: pretty;">Todo empieza con una llamada de 30 minutos sin costo. Salimos de ahí con el alcance definido: qué debe resolver el agente, con qué sistemas habla y qué nunca decide solo.</p>
+      </div>
+
+      <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" accent="{{ true }}" padding="{{ n32 }}" hint-size="100%,420px">
+        <div style="display: grid; gap: 22px;">
+          <div style="display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 16px; align-items: start;">
+            <span style="width: 34px; height: 34px; border-radius: 999px; background: var(--surface-accent-soft); color: var(--action-primary-active); font-family: var(--font-mono); font-size: 14px; display: flex; align-items: center; justify-content: center;">01</span>
+            <div>
+              <p style="margin: 0 0 4px; font-family: var(--font-display); font-weight: 600; font-size: 16.5px; color: var(--text-strong);">Llamada de diseño</p>
+              <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);">Revisamos tus conversaciones actuales y elegimos los casos que valen la pena automatizar primero.</p>
+            </div>
+          </div>
+          <div style="height: 1px; background: var(--line-subtle);"></div>
+          <div style="display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 16px; align-items: start;">
+            <span style="width: 34px; height: 34px; border-radius: 999px; background: var(--surface-accent-soft); color: var(--action-primary-active); font-family: var(--font-mono); font-size: 14px; display: flex; align-items: center; justify-content: center;">02</span>
+            <div>
+              <p style="margin: 0 0 4px; font-family: var(--font-display); font-weight: 600; font-size: 16.5px; color: var(--text-strong);">Entrenamiento con tu información</p>
+              <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);">Catálogo, políticas, preguntas frecuentes y tono de tu marca. El agente responde con lo tuyo, no con generalidades.</p>
+            </div>
+          </div>
+          <div style="height: 1px; background: var(--line-subtle);"></div>
+          <div style="display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 16px; align-items: start;">
+            <span style="width: 34px; height: 34px; border-radius: 999px; background: var(--surface-accent-soft); color: var(--action-primary-active); font-family: var(--font-mono); font-size: 14px; display: flex; align-items: center; justify-content: center;">03</span>
+            <div>
+              <p style="margin: 0 0 4px; font-family: var(--font-display); font-weight: 600; font-size: 16.5px; color: var(--text-strong);">Integración y pruebas</p>
+              <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);">Lo conectamos a WhatsApp, tu web o tu canal actual, y a los sistemas que debe consultar. Probamos con casos reales antes de abrirlo.</p>
+            </div>
+          </div>
+          <div style="height: 1px; background: var(--line-subtle);"></div>
+          <div style="display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 16px; align-items: start;">
+            <span style="width: 34px; height: 34px; border-radius: 999px; background: var(--surface-accent-soft); color: var(--action-primary-active); font-family: var(--font-mono); font-size: 14px; display: flex; align-items: center; justify-content: center;">04</span>
+            <div>
+              <p style="margin: 0 0 4px; font-family: var(--font-display); font-weight: 600; font-size: 16.5px; color: var(--text-strong);">Ajuste continuo</p>
+              <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);">Revisamos qué preguntó la gente, qué resolvió el agente y qué se escaló. Con eso lo mejoramos mes a mes.</p>
+            </div>
+          </div>
+        </div>
+      </x-import>
+    </div>
+  </section>
+
+  <section id="agendar" style="background: var(--surface-inverse);">
+    <div style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(32px,4vw,48px); align-items: start;">
+        <div>
+          <p style="margin: 0 0 14px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-teal);">Agenda tu llamada</p>
+          <h2 style="margin: 0 0 16px; font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; letter-spacing: -0.028em; color: var(--text-on-inverse); text-wrap: pretty;">Diseñemos tu agente en 30 minutos</h2>
+          <p style="margin: 0 0 28px; max-width: 560px; font-size: clamp(15.5px, 1.4vw, 17px); line-height: 1.62; color: var(--text-on-inverse-muted); text-wrap: pretty;">Escríbenos con una línea sobre tu negocio y por dónde te escriben tus clientes hoy. Te respondemos con horarios el mismo día hábil.</p>
+          <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+            <a href="mailto:contact@blaisetechnology.com?subject=Agendar%20llamada%20Dot%20%C2%B7%20agente%20de%20servicio%20con%20IA" style="text-decoration: none;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="gradient" size="lg" hint-size="auto,48px">Agendar llamada gratuita</x-import>
+            </a>
+            <a href="mailto:contact@blaisetechnology.com?subject=Informaci%C3%B3n%20sobre%20Dot" style="text-decoration: none;">
+              <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="inverse" size="lg" hint-size="auto,48px">Solicitar información</x-import>
+            </a>
+          </div>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 14px; background: var(--surface-inverse-raised); border: 1px solid var(--line-inverse); border-radius: var(--radius-xl); padding: 28px;">
+          <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--text-on-inverse);">Lleva esto a la llamada</p>
+          <div style="display: flex; gap: 12px; align-items: flex-start;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="message-circle" size="{{ n20 }}" color="var(--brand-teal)" hint-size="20px,20px"></x-import>
+            <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-on-inverse-muted);">Por dónde te escriben tus clientes hoy</span>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="file-text" size="{{ n20 }}" color="var(--brand-teal)" hint-size="20px,20px"></x-import>
+            <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-on-inverse-muted);">Las 5 preguntas que más repiten</span>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="plug" size="{{ n20 }}" color="var(--brand-teal)" hint-size="20px,20px"></x-import>
+            <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-on-inverse-muted);">Qué sistemas usas (inventario, agenda, CRM)</span>
+          </div>
+          <div style="display: flex; gap: 12px; align-items: flex-start;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="users" size="{{ n20 }}" color="var(--brand-teal)" hint-size="20px,20px"></x-import>
+            <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-on-inverse-muted);">Quién debe recibir los casos escalados</span>
+          </div>
+          <div style="height: 1px; background: var(--line-inverse); margin: 4px 0;"></div>
+          <p style="margin: 0; font-family: var(--font-mono); font-size: 13.5px; color: var(--brand-teal);">contact@blaisetechnology.com</p>
+        </div>
+      </div>
+      <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line-inverse); display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <svg viewBox="33 219 978 364" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dot" style="height: 20px; width: auto; color: var(--text-on-inverse); display: block;"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYTpjODhhYTM2NC0zZjI0LTQxMTMtYjY1NS1kOGFkYWIwNDUxMjEAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaDf0psjaiUfHIxLpgNOHWZYAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDoyY2Q2MWI5MC0yMzVkLTQ4NmEtYjRiMC03ODIwNGQ4MzBhODBscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNo9kvfZnOpIRqI21YiM3IB0gAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFgg8iNv5HLAx1mxWjyP8vgzFAlWJ7ruETbGig6hUIcVuSOkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaANrntc/ZpFtgizSk/RzeGMAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCBz+VjgMXX2HdpsgGzPK/vjvP5nC62VqRn649wWqCnDCGRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBioZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOmM4OGFhMzY0LTNmMjQtNDExMy1iNjU1LWQ4YWRhYjA0NTEyMS9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjdkZmY1ZDQxLTdhYjUtNDgzNi1hODM5LWI1MThmMDMzYWU1M3JjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCDyI2/kcsDHWbFaPI/y+DMUCVYnuu4RNsaKDqFQhxW5I6JjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggQR8czC1bN7Sk8naH5/u7ornnhY0kfwYrkXaR/SsUfm6iY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFgg+hbrnhEpYvBit3z9p19T4Cmi7TG0NRrOX0iXtPzUh6d0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQLTij3P/K0DZlN8rNF73HpwlV23Qnr7ucPVPmLGIhBRr14EqW6NUA6wIiRJAW2bUwChYk6Ak8KixgL1PMiE0xzU=</c2pa:manifest></metadata><path fill="currentColor" d="M36.5 573V223H151.5C188.833 223 221.167 230.5 248.5 245.5C275.833 260.5 297 281.167 312 307.5C327 333.833 334.5 364 334.5 398C334.5 432 327 462.167 312 488.5C297 514.833 275.833 535.5 248.5 550.5C221.167 565.5 188.833 573 151.5 573H36.5ZM96 520.5H152C175.667 520.5 196.667 515.667 215 506C233.667 496 248.333 481.833 259 463.5C269.667 444.833 275 423 275 398C275 372.667 269.667 350.833 259 332.5C248.333 314.167 233.667 300.167 215 290.5C196.667 280.5 175.667 275.5 152 275.5H96V520.5ZM508.539 579C482.206 579 458.872 573.167 438.539 561.5C418.206 549.5 402.039 533.5 390.039 513.5C378.372 493.167 372.539 470.5 372.539 445.5C372.539 420.5 378.372 398 390.039 378C402.039 357.667 418.206 341.667 438.539 330C458.872 318 482.206 312 508.539 312C534.539 312 557.706 318 578.039 330C598.372 341.667 614.372 357.5 626.039 377.5C638.039 397.5 644.039 420.167 644.039 445.5C644.039 470.5 638.039 493.167 626.039 513.5C614.372 533.5 598.372 549.5 578.039 561.5C557.706 573.167 534.539 579 508.539 579ZM508.539 530C524.206 530 537.872 526.333 549.539 519C561.206 511.333 570.206 501.167 576.539 488.5C582.872 475.833 586.039 461.5 586.039 445.5C586.039 429.833 582.872 415.667 576.539 403C570.206 390 561.206 379.833 549.539 372.5C537.872 364.833 524.206 361 508.539 361C492.539 361 478.706 364.833 467.039 372.5C455.706 379.833 446.706 389.833 440.039 402.5C433.706 415.167 430.539 429.5 430.539 445.5C430.539 461.167 433.706 475.5 440.039 488.5C446.706 501.167 455.706 511.333 467.039 519C478.706 526.333 492.539 530 508.539 530ZM776.797 573C754.13 573 736.297 566.5 723.297 553.5C710.63 540.5 704.297 522.833 704.297 500.5V254H761.297V498C761.297 505.667 763.63 512 768.297 517C772.964 521.667 779.13 524 786.797 524H840.297V573H776.797ZM660.297 367V318H840.797V367H660.297Z"></path><path d="M955.367 324C942.709 324 931.316 318.987 921.19 308.962C911.063 298.937 906 287.658 906 275.127C906 260.924 911.063 249.228 921.19 240.038C931.316 230.013 942.709 225 955.367 225C969.713 225 981.527 230.013 990.81 240.038C1000.94 249.228 1006 260.924 1006 275.127C1006 283.481 1003.47 291.418 998.405 298.937C994.186 306.456 988.278 312.304 980.684 316.481C973.089 321.494 964.65 324 955.367 324Z" fill="#A9F413"></path><path d="M955.367 448.5C942.709 448.5 931.316 443.487 921.19 433.462C911.063 423.437 906 412.158 906 399.627C906 385.424 911.063 373.728 921.19 364.538C931.316 354.513 942.709 349.5 955.367 349.5C969.713 349.5 981.527 354.513 990.81 364.538C1000.94 373.728 1006 385.424 1006 399.627C1006 407.981 1003.47 415.918 998.405 423.437C994.186 430.956 988.278 436.804 980.684 440.981C973.089 445.994 964.65 448.5 955.367 448.5Z" fill="#558CF0"></path><path d="M955.367 573C942.709 573 931.316 567.987 921.19 557.962C911.063 547.937 906 536.658 906 524.127C906 509.924 911.063 498.228 921.19 489.038C931.316 479.013 942.709 474 955.367 474C969.713 474 981.527 479.013 990.81 489.038C1000.94 498.228 1006 509.924 1006 524.127C1006 532.481 1003.47 540.418 998.405 547.937C994.186 555.456 988.278 561.304 980.684 565.481C973.089 570.494 964.65 573 955.367 573Z" fill="#F62F2F"></path></svg>
+          <span style="font-size: 12.5px; color: var(--text-on-inverse-muted);">un producto de</span>
+          <img src="assets/blaise-logo-white.svg" alt="Blaise" style="height: 22px; width: auto; display: block;">
+        </div>
+        <p style="margin: 0; font-size: 13px; color: var(--text-on-inverse-muted);">Blaise Technology LLC · Agentes de servicio con IA</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;demoCycleSeconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:15,&quot;min&quot;:8,&quot;max&quot;:26,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Demos&quot;},&quot;showTypingIndicator&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Demos&quot;},&quot;revealOnScroll&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Animación&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    this._timers = [];
+    this.applyTokens();
+    this.setupReveal();
+    this.setupDemos();
+  }
+  componentWillUnmount() {
+    (this._timers || []).forEach(clearTimeout);
+  }
+  componentDidUpdate() {
+    this.applyTokens();
+    this.applyReveal();
+  }
+  applyTokens() {
+    document.documentElement.style.setProperty('--dot-typing', (this.props.showTypingIndicator ?? true) ? 'flex' : 'none');
+  }
+  applyReveal() {
+    const on = this.props.revealOnScroll !== false;
+    document.querySelectorAll('[data-reveal]').forEach(el => {
+      if (!on) {
+        el.classList.remove('cf-armed');
+        el.classList.add('cf-in');
+      } else {
+        const r = el.getBoundingClientRect();
+        if (r.top >= window.innerHeight || r.bottom <= 0) {
+          el.classList.remove('cf-in');
+          el.classList.add('cf-armed');
+          if (this._io) this._io.observe(el);
+        }
+      }
+    });
+  }
+  wait(ms, fn) {
+    const t = setTimeout(fn, ms);
+    this._timers.push(t);
+    return t;
+  }
+  setupDemos() {
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const panels = document.querySelectorAll('[data-demo]');
+    if (!panels.length) {
+      this._demoTries = (this._demoTries || 0) + 1;
+      if (this._demoTries < 60) requestAnimationFrame(() => this.setupDemos());
+      return;
+    }
+    if (this._demosRunning) return;
+    this._demosRunning = true;
+    const template = document.querySelector('.dot-typing');
+    panels.forEach((panel, i) => {
+      panel.classList.add('dot-live');
+      const existing = panel.querySelector('.dot-typing');
+      if (existing) panel.appendChild(existing);
+      else if (template) panel.appendChild(template.cloneNode(true));
+      this.wait(400 + i * 260, () => this.runDemo(panel));
+    });
+  }
+  runDemo(panel) {
+    const cycle = (this.props.demoCycleSeconds ?? 15) * 1000;
+    const msgs = Array.prototype.slice.call(panel.querySelectorAll('.dot-msg'));
+    const typing = panel.querySelector('.dot-typing');
+    if (!msgs.length) return;
+    const gap = Math.max(900, (cycle * 0.62) / msgs.length);
+    let i = 0;
+    const clear = () => {
+      msgs.forEach(m => m.classList.remove('dot-shown'));
+      if (typing) typing.classList.remove('dot-shown');
+      this.wait(1100, () => { i = 0; next(); });
+    };
+    const next = () => {
+      if (i >= msgs.length) {
+        this.wait(Math.max(1800, cycle * 0.2), clear);
+        return;
+      }
+      const msg = msgs[i];
+      const isAgent = msg.getAttribute('data-agent') === '1';
+      const show = () => {
+        if (typing) typing.classList.remove('dot-shown');
+        msg.classList.add('dot-shown');
+        i += 1;
+        this.wait(gap, next);
+      };
+      if (isAgent && typing && (this.props.showTypingIndicator ?? true)) {
+        typing.classList.add('dot-shown');
+        this.wait(780, show);
+      } else {
+        show();
+      }
+    };
+    next();
+  }
+  setupReveal() {
+    const root = document;
+    const els = root.querySelectorAll('[data-reveal]');
+    if (!els.length) {
+      if (this._revealTries === undefined) this._revealTries = 0;
+      if (this._revealTries++ < 60) requestAnimationFrame(() => this.setupReveal());
+      return;
+    }
+    if (this._revealDone) return;
+    this._revealDone = true;
+    if (this.props && this.props.revealOnScroll === false) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting || entry.boundingClientRect.top < window.innerHeight) {
+          entry.target.classList.add('cf-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -40px 0px' });
+    this._io = io;
+    els.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) return;
+      el.classList.add('cf-armed');
+      io.observe(el);
+    });
+  }
+  renderVals() {
+    return {
+      n14: 14,
+      n15: 15,
+      n16: 16,
+      n18: 18,
+      n20: 20,
+      n22: 22,
+      n28: 28,
+      n32: 32,
+      true: true
+    };
+  }
+}
+
+</script>
+</body>
+</html>

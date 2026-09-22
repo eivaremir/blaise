@@ -1,0 +1,10 @@
+:root{
+--shadow-xs:0 1px 2px rgba(22,32,58,.06);
+--shadow-sm:0 1px 3px rgba(22,32,58,.07),0 1px 2px rgba(22,32,58,.04);
+--shadow-md:0 4px 14px rgba(22,32,58,.08);
+--shadow-lg:0 12px 32px rgba(22,32,58,.10);
+--shadow-xl:0 24px 60px rgba(22,32,58,.14);
+--shadow-focus:0 0 0 3px rgba(125,146,247,.45);
+--shadow-inset-line:inset 0 -1px 0 #dfe6f3;
+--shadow-brand:0 10px 26px rgba(68,107,244,.22);
+}

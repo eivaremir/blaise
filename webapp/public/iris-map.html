@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cobertura Iris</title>
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="tokens.css">
+<style>
+  html, body { margin: 0; height: 100%; background: var(--surface-panel, #ffffff); font-family: var(--font-body, system-ui); color: var(--text-body, #16203a); }
+  #shell { display: flex; gap: 20px; align-items: stretch; width: 100%; height: 100%; padding: 16px 18px; box-sizing: border-box; }
+  #wrap { position: relative; flex: 1 1 auto; min-width: 0; min-height: 420px; }
+  #list { flex: 0 0 216px; display: grid; grid-template-columns: 1fr; gap: 2px; align-content: start; overflow: hidden; }
+  #list .li { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 5px 0; border-bottom: 1px solid var(--line-subtle, #eef2f9); }
+  #list .c { font-size: 13px; color: var(--text-muted, #5b6a8c); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #list .q { font-family: var(--font-mono, ui-monospace); font-size: 13px; font-weight: 700; color: var(--text-strong, #16203a); }
+  @media (max-width: 720px) { #shell { flex-direction: column; } #list { flex: none; grid-template-columns: 1fr 1fr; gap: 2px 18px; } }
+  svg { display: block; width: 100%; height: 100%; }
+  .ocean { fill: transparent; }
+  .country { stroke: var(--surface-panel, #ffffff); stroke-width: 0.6; transition: fill 140ms cubic-bezier(.2,.6,.25,1); }
+  .label { font-family: var(--font-mono, ui-monospace); font-size: 11px; fill: #ffffff; pointer-events: none; }
+  .label-muted { fill: #16203a; }
+  #tip { position: absolute; pointer-events: none; opacity: 0; transform: translate(-50%, -115%); background: var(--surface-panel, #fff); border: 1px solid var(--line-default, #dfe6f3); border-radius: var(--radius-md, 10px); box-shadow: var(--shadow-lg, 0 10px 28px rgba(22,32,58,.18)); padding: 9px 12px; white-space: nowrap; transition: opacity 140ms; }
+  #tip .n { margin: 0; font-family: var(--font-display, system-ui); font-weight: 700; font-size: 13.5px; color: var(--text-strong, #16203a); }
+  #tip .v { margin: 2px 0 0; font-family: var(--font-mono, ui-monospace); font-size: 12px; color: var(--text-muted, #5b6a8c); }
+  #legend { position: absolute; left: 0; bottom: 0; display: flex; flex-wrap: wrap; gap: 14px; align-items: center; font-size: 12.5px; color: var(--text-muted, #5b6a8c); }
+  #legend span.sw { width: 12px; height: 12px; border-radius: 3px; display: inline-block; margin-right: 6px; vertical-align: -1px; }
+  @media (prefers-color-scheme: dark) {
+    body { color: #e4eaf7; background: #16203a; }
+    .country { stroke: #16203a; }
+    .label-muted { fill: #0d1526; }
+    #tip { background: #16203a; border-color: #2c3757; }
+    #tip .n { color: #fff; }
+    #tip .v { color: #b3bdd1; }
+    #legend { color: #b3bdd1; }
+    #list .c { color: #b3bdd1; }
+    #list .q { color: #ffffff; }
+    #list .li { border-bottom-color: #1e2942; }
+  }
+</style>
+</head>
+<body>
+<div id="shell">
+<div id="wrap">
+  <svg id="map" role="img" aria-label="Mapa de cobertura de tiendas monitoreadas en América Latina y el Caribe"></svg>
+  <div id="tip"></div>
+  <div id="legend">
+    <span style="width:100%; font-size:12px;">La cifra sobre cada país es el número de tiendas monitoreadas.</span>
+    <span><span class="sw" style="background:#22378a"></span>10 o más tiendas</span>
+    <span><span class="sw" style="background:#2f4bb4"></span>5 a 9 tiendas</span>
+    <span><span class="sw" style="background:#3f62e0"></span>1 a 4 tiendas</span>
+  </div>
+</div>
+<aside id="list" aria-label="Tiendas monitoreadas por país"></aside>
+</div>
+<script>
+const DATA = {
+  "Panama":                { active: 14, total: 17 },
+  "Guatemala":             { active: 9,  total: 9 },
+  "Honduras":              { active: 5,  total: 6 },
+  "El Salvador":           { active: 4,  total: 4 },
+  "Nicaragua":             { active: 4,  total: 5 },
+  "Costa Rica":            { active: 5,  total: 5 },
+  "Dominican Rep.":        { active: 5,  total: 5 },
+  "Ecuador":               { active: 5,  total: 5 },
+  "Venezuela":             { active: 2,  total: 2 },
+  "Puerto Rico":           { active: 1,  total: 1 },
+  "Jamaica":               { active: 1,  total: 1 },
+  "Trinidad and Tobago":   { active: 1,  total: 2 },
+  "Brazil":                { active: 0,  total: 7 },
+  "Colombia":              { active: 0,  total: 8 },
+  "Argentina":             { active: 0,  total: 11 },
+  "Uruguay":               { active: 0,  total: 5 }
+};
+const ALIASES = { "Dominican Republic": "Dominican Rep.", "Brasil": "Brazil", "Trinidad & Tobago": "Trinidad and Tobago" };
+
+function colorFor(d) {
+  if (!d) return null;
+  if (d.total >= 10) return "#22378a";
+  if (d.total >= 5) return "#2f4bb4";
+  return "#3f62e0";
+}
+
+const svg = d3.select("#map");
+const tip = d3.select("#tip");
+let features = [];
+
+d3.json("https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json").then(topology => {
+  features = topojson.feature(topology, topology.objects.countries).features;
+  renderList();
+  render();
+  window.addEventListener("resize", render);
+});
+
+function render() {
+  const wrap = document.getElementById("wrap");
+  const w = wrap.clientWidth || 800;
+  const h = wrap.clientHeight || 520;
+  svg.attr("viewBox", null).selectAll("*").remove();
+
+  const region = { type: "FeatureCollection", features: features.filter(f => DATA[name(f)] || ["Mexico","Peru","Bolivia","Chile","Paraguay","Cuba","Haiti","Belize","Guyana","Suriname"].includes(name(f))) };
+  const projection = d3.geoMercator().fitExtent([[18, 12], [w - 18, h - 46]], region);
+  const path = d3.geoPath(projection);
+
+  const g = svg.append("g");
+  g.selectAll("path")
+    .data(features)
+    .join("path")
+    .attr("class", "country")
+    .attr("d", path)
+    .attr("fill", f => colorFor(DATA[name(f)]) || "var(--surface-sunken, #eef2f9)")
+    .attr("opacity", f => DATA[name(f)] ? 1 : 0.5)
+    .on("mousemove", (event, f) => {
+      const d = DATA[name(f)];
+      if (!d) { tip.style("opacity", 0); return; }
+      tip.html('<p class="n">' + name(f) + '</p><p class="v">' + d.total + (d.total === 1 ? ' tienda monitoreada' : ' tiendas monitoreadas') + '</p>')
+         .style("left", event.offsetX + "px")
+         .style("top", event.offsetY + "px")
+         .style("opacity", 1);
+    })
+    .on("mouseleave", () => tip.style("opacity", 0));
+
+  g.selectAll("text")
+    .data(features.filter(f => DATA[name(f)] && fits(f, path)))
+    .join("text")
+    .attr("class", "label")
+    .attr("x", f => path.centroid(f)[0])
+    .attr("y", f => path.centroid(f)[1])
+    .attr("text-anchor", "middle")
+    .attr("dy", "0.35em")
+    .text(f => DATA[name(f)].total);
+}
+
+function name(f) {
+  const n = f.properties && f.properties.name;
+  return ALIASES[n] || n;
+}
+function fits(f, path) {
+  const b = path.bounds(f);
+  return (b[1][0] - b[0][0]) >= 30 && (b[1][1] - b[0][1]) >= 18;
+}
+
+function renderList() {
+  const rows = Object.keys(DATA)
+    .map(k => ({ country: k, total: DATA[k].total }))
+    .sort((a, b) => b.total - a.total || a.country.localeCompare(b.country));
+  const NAMES = { "Dominican Rep.": "Rep. Dominicana", "Brazil": "Brasil", "Trinidad and Tobago": "Trinidad y Tobago" };
+  d3.select("#list").selectAll("div.li")
+    .data(rows)
+    .join("div")
+    .attr("class", "li")
+    .html(d => '<span class="c">' + (NAMES[d.country] || d.country) + '</span><span class="q">' + d.total + '</span>');
+}
+</script>
+</body>
+</html>

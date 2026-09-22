@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/colors.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/typography.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/radius.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/shadow.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/motion.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/tokens/base.css">
+<link rel="stylesheet" href="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/styles.css">
+<script src="_ds/blaise-design-system-021630e1-9c0c-4c9f-8b12-9307d1a50ca6/_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--surface-page); color: var(--text-body); font-family: var(--font-body); }
+  a { color: var(--text-link); text-decoration: none; }
+  a:hover { color: var(--text-link-hover); text-decoration: underline; }
+  [data-logo-dark] { display: none; }
+  @media (prefers-color-scheme: dark) {
+    [data-logo-light] { display: none !important; }
+    [data-logo-dark] { display: block !important; }
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --surface-page: #0d1526;
+      --surface-panel: #16203a;
+      --surface-sunken: #1b2540;
+      --surface-inverse: #070d1a;
+      --surface-inverse-raised: #1b2540;
+      --surface-accent-soft: #1d2647;
+      --surface-teal-soft: #10251f;
+      --text-strong: #ffffff;
+      --text-body: #e4eaf7;
+      --text-muted: #b3bdd1;
+      --text-faint: #8492ae;
+      --text-on-inverse: #ffffff;
+      --text-on-inverse-muted: #b3bdd1;
+      --text-link: #7d92f7;
+      --text-link-hover: #b4c2fb;
+      --line-subtle: #1e2942;
+      --line-default: #2c3757;
+      --line-strong: #3c4a6b;
+      --line-inverse: #26314f;
+      --action-primary: #446bf4;
+      --action-primary-hover: #5a7df6;
+      --action-primary-active: #9aabf9;
+      --action-secondary-bg: #16203a;
+      --action-secondary-hover: #1e2942;
+      --sky-400: #7ec2ef;
+      --sky-300: #8fd0f5;
+      --status-success: #34c4a4;
+      --status-error: #f0737c;
+      --status-success-soft: #123026;
+      --status-error-soft: #3a1b1f;
+      --status-warning: #e8b53c;
+      --status-warning-soft: #362a12;
+      --status-info: #7ec2ef;
+      --status-info-soft: #16293d;
+      --brand-teal: #5fd4b7;
+      --shadow-inset-line: inset 0 -1px 0 #2c3757;
+      --shadow-xs: 0 1px 2px rgba(0,0,0,0.5);
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.45);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+      --shadow-lg: 0 10px 28px rgba(0,0,0,0.55);
+      --shadow-xl: 0 20px 50px rgba(0,0,0,0.6);
+    }
+    img[alt="canalfact"] { filter: none !important; }
+  }
+</style>
+</helmet>
+
+<div style="background: var(--surface-page); font-family: var(--font-body); color: var(--text-body); min-height: 100%;">
+
+  <div style="position: sticky; top: 0; z-index: 30;">
+  <nav aria-label="Productos Blaise" style=" background: var(--surface-sunken); border-bottom: 1px solid var(--line-default);">
+    <div style="max-width: 1160px; margin: 0 auto; padding: 9px clamp(20px,4vw,32px); display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: space-between;">
+      <div style="display: flex; align-items: center; gap: 14px; min-width: 0;">
+        <a href="Home%20Page.dc.html" style="display: flex; align-items: center; text-decoration: none; color: var(--text-strong);">
+          <img data-logo-light src="assets/blaise-logo.svg" alt="Blaise" style="height: 22px; width: auto; display: block;"><img data-logo-dark src="assets/blaise-logo-white.svg" alt="Blaise" style="height: 22px; width: auto;">
+        </a>
+        <span style="width: 1px; height: 18px; background: var(--line-default);"></span>
+        <div style="display: flex; align-items: center; gap: 2px; flex-wrap: wrap;">
+          <a href="Home%20Page.dc.html" style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-md); font-family: var(--font-display); font-weight: 600; font-size: 13.5px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; color: var(--text-muted); background: transparent;" style-hover="background: var(--surface-panel); color: var(--text-strong);">Inicio</a>
+          <a href="Services%20Page.dc.html" style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-md); font-family: var(--font-display); font-weight: 700; font-size: 13.5px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; color: var(--text-strong); background: var(--surface-panel); box-shadow: var(--shadow-xs);" style-hover="background: var(--surface-panel); color: var(--text-strong);">Servicios</a>
+          <a href="canalfact%20Subpage.dc.html" style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-md); font-family: var(--font-display); font-weight: 600; font-size: 13.5px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; color: var(--text-muted); background: transparent;" style-hover="background: var(--surface-panel); color: var(--text-strong);">canalfact</a>
+          <a href="Dot%20Page.dc.html" style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-md); font-family: var(--font-display); font-weight: 600; font-size: 13.5px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; color: var(--text-muted); background: transparent;" style-hover="background: var(--surface-panel); color: var(--text-strong);">Dot</a>
+          <a href="Iris%20Page.dc.html" style="display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border-radius: var(--radius-md); font-family: var(--font-display); font-weight: 600; font-size: 13.5px; letter-spacing: -0.01em; text-decoration: none; white-space: nowrap; color: var(--text-muted); background: transparent;" style-hover="background: var(--surface-panel); color: var(--text-strong);">Iris</a>
+        </div>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <a href="mailto:contact@blaisetechnology.com?subject=Consulta%201:1%20gratuita" style="font-size: 12.5px; color: var(--text-link); text-decoration: none; white-space: nowrap;" style-hover="text-decoration: underline;">Consulta 1:1 gratuita</a>
+        <div style="display: flex; align-items: center; gap: 6px; padding: 3px; background: var(--surface-panel); box-shadow: var(--shadow-xs); border-radius: var(--radius-md);">
+            <button type="button" onClick="{{ setEs }}" style="height: 26px; padding: 0 10px; border: none; border-radius: 8px; font-family: var(--font-display); font-weight: 600; font-size: 12.5px; cursor: pointer; background: {{ esChipBg }}; color: {{ esChipFg }}; box-shadow: {{ esChipShadow }};">ES</button>
+            <button type="button" onClick="{{ setEn }}" style="height: 26px; padding: 0 10px; border: none; border-radius: 8px; font-family: var(--font-display); font-weight: 600; font-size: 12.5px; cursor: pointer; background: {{ enChipBg }}; color: {{ enChipFg }}; box-shadow: {{ enChipShadow }};">EN</button>
+          </div>
+      </div>
+    </div>
+  </nav>
+
+  <header style=" background: var(--surface-panel); border-bottom: 1px solid var(--line-default); box-shadow: var(--shadow-inset-line);">
+    <div style="max-width: 1160px; margin: 0 auto; padding: 14px clamp(20px,4vw,32px); display: flex; align-items: center; gap: 24px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: center; gap: 10px; margin-right: auto;">
+        <img data-logo-light src="assets/blaise-logo.svg" alt="Blaise" style="height: 32px; width: auto; display: block;"><img data-logo-dark src="assets/blaise-logo-white.svg" alt="Blaise" style="height: 32px; width: auto;">
+      </div>
+      <a href="#consulta" style="text-decoration: none;">
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="secondary" size="sm" hint-size="auto,32px">
+          <span style="display: {{ esInline }}">Reservar consulta</span><span style="display: {{ enInline }}">Book a call</span>
+        </x-import>
+      </a>
+    </div>
+  </header>
+  </div>
+
+  <section style="position: relative; background: var(--surface-inverse); overflow: hidden;">
+    <div style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px); display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(32px,4vw,48px); align-items: start;">
+      <div>
+        <p style="margin: 0 0 16px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-teal);">
+          <span style="display: {{ esInline }}">Consultoría 1:1 gratuita</span><span style="display: {{ enInline }}">Free 1:1 consultation</span>
+        </p>
+        <h1 style="margin: 0 0 20px; font-family: var(--font-display); font-weight: 800; font-size: clamp(30px, 4.4vw, 52px); line-height: 1.08; letter-spacing: -0.028em; color: var(--text-on-inverse); text-wrap: pretty;">
+          <span style="display: {{ esBlock }}">Hablemos 30 minutos de lo que tu negocio necesita construir.</span><span style="display: {{ enBlock }}">Thirty minutes on what your business actually needs to build.</span>
+        </h1>
+        <p style="margin: 0 0 32px; max-width: 620px; font-size: clamp(16px, 1.5vw, 18px); line-height: 1.62; color: var(--text-on-inverse-muted); text-wrap: pretty;">
+          <span style="display: {{ esBlock }}">Somos Blaise: no damos recomendaciones y nos vamos, construimos y entregamos el software. Facturación electrónica para Panamá, agentes de servicio con IA, extracción de datos web y trabajo en AWS. Empieza con una llamada gratuita con nuestros expertos.</span><span style="display: {{ enBlock }}">We are Blaise. We don't hand over a recommendation and leave — we build and ship the software. Electronic invoicing for Panama, LLM service agents, web data extraction and AWS work. Start with a free call with our experts.</span>
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
+          <a href="#consulta" style="text-decoration: none;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="gradient" size="lg" hint-size="auto,48px">
+              <span style="display: {{ esInline }}">Reservar consulta gratuita</span><span style="display: {{ enInline }}">Book the free consultation</span>
+            </x-import>
+          </a>
+          <a href="#construimos" style="text-decoration: none;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="inverse" size="lg" hint-size="auto,48px">
+              <span style="display: {{ esInline }}">Ver qué construimos</span><span style="display: {{ enInline }}">See what we build</span>
+            </x-import>
+          </a>
+        </div>
+        <p style="margin: 20px 0 0; font-size: 15px; color: var(--brand-teal);">
+          <span style="display: {{ esInline }}">30 minutos · sin costo · sin compromiso</span><span style="display: {{ enInline }}">30 minutes · no cost · no commitment</span>
+        </p>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 16px; background: var(--surface-inverse-raised); border: 1px solid var(--line-inverse); border-radius: var(--radius-xl); padding: 28px;">
+        <p style="margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 17px; color: var(--text-on-inverse);">
+          <span style="display: {{ esBlock }}">Con qué llegan nuestros clientes</span><span style="display: {{ enBlock }}">What clients arrive with</span>
+        </p>
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="file-text" size="{{ n20 }}" color="var(--brand-teal)" hint-size="20px,20px"></x-import>
+          <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-on-inverse-muted);"><span style="display: {{ esInline }}">"Tengo que cumplir con la DGI y no sé por dónde empezar."</span><span style="display: {{ enInline }}">"I have to comply with the DGI and don't know where to start."</span></span>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="message-circle" size="{{ n20 }}" color="var(--brand-teal)" hint-size="20px,20px"></x-import>
+          <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-on-inverse-muted);"><span style="display: {{ esInline }}">"Mi equipo responde las mismas preguntas todo el día."</span><span style="display: {{ enInline }}">"My team answers the same questions all day."</span></span>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="database" size="{{ n20 }}" color="var(--brand-teal)" hint-size="20px,20px"></x-import>
+          <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-on-inverse-muted);"><span style="display: {{ esInline }}">"Los datos que necesito viven en veinte sitios web distintos."</span><span style="display: {{ enInline }}">"The data I need lives on twenty different websites."</span></span>
+        </div>
+        <div style="display: flex; gap: 12px; align-items: flex-start;">
+          <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="cloud" size="{{ n20 }}" color="var(--brand-teal)" hint-size="20px,20px"></x-import>
+          <span style="font-size: 15.5px; line-height: 1.55; color: var(--text-on-inverse-muted);"><span style="display: {{ esInline }}">"Nuestra infraestructura creció sin plan y ya cuesta demasiado."</span><span style="display: {{ enInline }}">"Our infrastructure grew without a plan and costs too much."</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="consulta" style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(32px,4vw,48px); align-items: start;">
+      <div>
+        <p style="margin: 0 0 14px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sky-400);">
+          <span style="display: {{ esInline }}">La llamada</span><span style="display: {{ enInline }}">The call</span>
+        </p>
+        <h2 style="margin: 0 0 18px; font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.14; letter-spacing: -0.026em; color: var(--text-strong); text-wrap: pretty;">
+          <span style="display: {{ esBlock }}">Una consulta 1:1 de 30 minutos, con nuestros expertos, sin costo.</span><span style="display: {{ enBlock }}">A 30-minute 1:1 consultation with our experts, at no cost.</span>
+        </h2>
+        <p style="margin: 0 0 28px; font-size: clamp(15.5px, 1.4vw, 17px); line-height: 1.62; color: var(--text-muted); text-wrap: pretty;">
+          <span style="display: {{ esBlock }}">No es una demo comercial. Cuéntanos qué estás intentando resolver y te decimos con claridad qué se puede construir, en qué orden y qué implica. Si no somos la opción correcta, también te lo decimos.</span><span style="display: {{ enBlock }}">It isn't a sales demo. Tell us what you're trying to solve and we'll tell you plainly what can be built, in what order, and what it involves. If we're not the right fit, we'll say that too.</span>
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 12px;">
+          <a href="mailto:contact@blaisetechnology.com?subject=Consulta%201:1%20gratuita" style="text-decoration: none;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="primary" size="lg" hint-size="auto,48px">
+              <span style="display: {{ esInline }}">Escribir para agendar</span><span style="display: {{ enInline }}">Email us to schedule</span>
+            </x-import>
+          </a>
+          <a href="#contacto" style="text-decoration: none;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="secondary" size="lg" hint-size="auto,48px">
+              <span style="display: {{ esInline }}">Otras formas de contacto</span><span style="display: {{ enInline }}">Other ways to reach us</span>
+            </x-import>
+          </a>
+        </div>
+      </div>
+
+      <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" accent="{{ true }}" padding="{{ n32 }}" hint-size="100%,360px">
+        <p style="margin: 0 0 24px; font-family: var(--font-display); font-weight: 700; font-size: 19px; color: var(--text-strong);">
+          <span style="display: {{ esBlock }}">Cómo funciona</span><span style="display: {{ enBlock }}">How it works</span>
+        </p>
+        <div style="display: grid; gap: 22px;">
+          <div style="display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 16px; align-items: start;">
+            <span style="width: 34px; height: 34px; border-radius: 999px; background: var(--surface-accent-soft); color: var(--action-primary-active); font-family: var(--font-mono); font-size: 14px; display: flex; align-items: center; justify-content: center;">01</span>
+            <div>
+              <p style="margin: 0 0 4px; font-family: var(--font-display); font-weight: 600; font-size: 16.5px; color: var(--text-strong);"><span style="display: {{ esBlock }}">Escribes y agendamos</span><span style="display: {{ enBlock }}">You write, we schedule</span></p>
+              <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);"><span style="display: {{ esBlock }}">Un correo con dos líneas sobre tu negocio es suficiente. Te respondemos con horarios disponibles.</span><span style="display: {{ enBlock }}">Two lines about your business is enough. We reply with available times.</span></p>
+            </div>
+          </div>
+          <div style="height: 1px; background: var(--line-subtle);"></div>
+          <div style="display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 16px; align-items: start;">
+            <span style="width: 34px; height: 34px; border-radius: 999px; background: var(--surface-accent-soft); color: var(--action-primary-active); font-family: var(--font-mono); font-size: 14px; display: flex; align-items: center; justify-content: center;">02</span>
+            <div>
+              <p style="margin: 0 0 4px; font-family: var(--font-display); font-weight: 600; font-size: 16.5px; color: var(--text-strong);"><span style="display: {{ esBlock }}">30 minutos en video</span><span style="display: {{ enBlock }}">30 minutes on video</span></p>
+              <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);"><span style="display: {{ esBlock }}">Hablas directamente con quien construye: revisamos tu situación actual, las restricciones y lo que ya intentaste.</span><span style="display: {{ enBlock }}">You talk to the people who build: we go through your current setup, the constraints and what you've already tried.</span></p>
+            </div>
+          </div>
+          <div style="height: 1px; background: var(--line-subtle);"></div>
+          <div style="display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 16px; align-items: start;">
+            <span style="width: 34px; height: 34px; border-radius: 999px; background: var(--surface-accent-soft); color: var(--action-primary-active); font-family: var(--font-mono); font-size: 14px; display: flex; align-items: center; justify-content: center;">03</span>
+            <div>
+              <p style="margin: 0 0 4px; font-family: var(--font-display); font-weight: 600; font-size: 16.5px; color: var(--text-strong);"><span style="display: {{ esBlock }}">Te queda algo en la mano</span><span style="display: {{ enBlock }}">You leave with something</span></p>
+              <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);"><span style="display: {{ esBlock }}">Un resumen escrito con los siguientes pasos concretos, úsalo con nosotros o con quien quieras.</span><span style="display: {{ enBlock }}">A written summary with concrete next steps — use it with us or with anyone else.</span></p>
+            </div>
+          </div>
+        </div>
+      </x-import>
+    </div>
+  </section>
+
+  <section id="construimos" style="background: var(--surface-panel); border-top: 1px solid var(--line-default); border-bottom: 1px solid var(--line-default);">
+    <div style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px);">
+      <p style="margin: 0 0 14px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sky-400);">
+        <span style="display: {{ esInline }}">Qué construimos</span><span style="display: {{ enInline }}">What we build</span>
+      </p>
+      <h2 style="margin: 0 0 12px; font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 3.2vw, 38px); line-height: 1.14; letter-spacing: -0.026em; color: var(--text-strong);">
+        <span style="display: {{ esBlock }}">Software a medida, ya implementado.</span><span style="display: {{ enBlock }}">Custom software, already implemented.</span>
+      </h2>
+      <p style="margin: 0 0 48px; max-width: 720px; font-size: clamp(15.5px, 1.4vw, 17px); line-height: 1.62; color: var(--text-muted); text-wrap: pretty;">
+        <span style="display: {{ esBlock }}">Cada desarrollo empieza con la misma llamada gratuita. Estas son las áreas donde ya tenemos producto funcionando.</span><span style="display: {{ enBlock }}">Every engagement starts with the same free call. These are the areas where we already have working product.</span>
+      </p>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px;">
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" padding="{{ n24 }}" hint-size="100%,220px">
+          <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="file-text" size="{{ n24 }}" color="var(--sky-400)" hint-size="24px,24px"></x-import>
+          <p style="margin: 16px 0 6px; font-family: var(--font-display); font-weight: 700; font-size: 17.5px; color: var(--text-strong);"><span style="display: {{ esBlock }}">Facturación electrónica</span><span style="display: {{ enBlock }}">Electronic invoicing</span></p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);"><span style="display: {{ esBlock }}">Emites tus facturas y cumples con la ley. canalfact es el puente entre tu negocio y los proveedores autorizados (PAC) que reportan a la DGI.</span><span style="display: {{ enBlock }}">Issue your invoices and stay compliant. canalfact is the bridge between your business and the DGI-authorised providers (PACs).</span></p>
+        </x-import>
+
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" padding="{{ n24 }}" hint-size="100%,220px">
+          <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="message-circle" size="{{ n24 }}" color="var(--sky-400)" hint-size="24px,24px"></x-import>
+          <p style="margin: 16px 0 6px; font-family: var(--font-display); font-weight: 700; font-size: 17.5px; color: var(--text-strong);"><span style="display: {{ esBlock }}">Servicio al cliente con IA</span><span style="display: {{ enBlock }}">AI customer service</span></p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);"><span style="display: {{ esBlock }}">Dot atiende las preguntas repetitivas con agentes basados en modelos de lenguaje, y pasa a una persona cuando hace falta.</span><span style="display: {{ enBlock }}">Dot handles the repetitive questions with LLM-powered agents, and hands off to a person when it matters.</span></p>
+        </x-import>
+
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" padding="{{ n24 }}" hint-size="100%,220px">
+          <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="database" size="{{ n24 }}" color="var(--sky-400)" hint-size="24px,24px"></x-import>
+          <p style="margin: 16px 0 6px; font-family: var(--font-display); font-weight: 700; font-size: 17.5px; color: var(--text-strong);"><span style="display: {{ esBlock }}">Extracción de datos web</span><span style="display: {{ enBlock }}">Web data extraction</span></p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);"><span style="display: {{ esBlock }}">Iris recoge datos de logística y comercio electrónico de forma continua y te los entrega estructurados y listos para usar.</span><span style="display: {{ enBlock }}">Iris collects logistics and e-commerce data continuously and delivers it structured and ready to use.</span></p>
+        </x-import>
+
+        <x-import component-from-global-scope="BlaiseDesignSystem_021630.Card" variant="default" padding="{{ n24 }}" hint-size="100%,220px">
+          <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="cloud" size="{{ n24 }}" color="var(--sky-400)" hint-size="24px,24px"></x-import>
+          <p style="margin: 16px 0 6px; font-family: var(--font-display); font-weight: 700; font-size: 17.5px; color: var(--text-strong);"><span style="display: {{ esBlock }}">Nube e infraestructura</span><span style="display: {{ enBlock }}">Cloud and infrastructure</span></p>
+          <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);"><span style="display: {{ esBlock }}">Diseñamos, migramos y ordenamos tu entorno en AWS, con costos y permisos bajo control.</span><span style="display: {{ enBlock }}">We design, migrate and tidy up your AWS environment, with costs and permissions under control.</span></p>
+        </x-import>
+      </div>
+    </div>
+  </section>
+
+  <section style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px);">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(32px,4vw,48px); align-items: center;">
+      <div>
+        <p style="margin: 0 0 14px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sky-400);">
+          <span style="display: {{ esInline }}">Cómo trabajamos</span><span style="display: {{ enInline }}">How we work</span>
+        </p>
+        <h2 style="margin: 0 0 18px; font-family: var(--font-display); font-weight: 800; font-size: clamp(24px, 2.9vw, 34px); line-height: 1.16; letter-spacing: -0.026em; color: var(--text-strong); text-wrap: pretty;">
+          <span style="display: {{ esBlock }}">No entregamos recomendaciones: entregamos software funcionando.</span><span style="display: {{ enBlock }}">We don't deliver recommendations. We deliver working software.</span>
+        </h2>
+        <p style="margin: 0; font-size: clamp(15.5px, 1.4vw, 17px); line-height: 1.62; color: var(--text-muted); text-wrap: pretty;">
+          <span style="display: {{ esBlock }}">Todo lo que vendemos lo implementamos nosotros primero. Por eso la conversación técnica es directa: puedes preguntar por decisiones de arquitectura, plazos reales y qué se rompe cuando algo crece.</span><span style="display: {{ enBlock }}">Everything we sell, we implemented ourselves first. That makes the technical conversation direct: ask about architecture decisions, real timelines, and what breaks as things grow.</span>
+        </p>
+      </div>
+      <div style="display: grid; gap: 16px;">
+        <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--surface-panel); border: 1px solid var(--line-default); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 20px 22px;">
+          <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="code" size="{{ n22 }}" color="var(--sky-400)" hint-size="22px,22px"></x-import>
+          <div>
+            <p style="margin: 0 0 4px; font-family: var(--font-display); font-weight: 600; font-size: 16.5px; color: var(--text-strong);"><span style="display: {{ esBlock }}">Alcance corto y visible</span><span style="display: {{ enBlock }}">Short, visible scope</span></p>
+            <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);"><span style="display: {{ esBlock }}">Primero una pieza que puedas usar, luego la siguiente.</span><span style="display: {{ enBlock }}">One usable piece first, then the next.</span></p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--surface-panel); border: 1px solid var(--line-default); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 20px 22px;">
+          <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="users" size="{{ n22 }}" color="var(--sky-400)" hint-size="22px,22px"></x-import>
+          <div>
+            <p style="margin: 0 0 4px; font-family: var(--font-display); font-weight: 600; font-size: 16.5px; color: var(--text-strong);"><span style="display: {{ esBlock }}">Un equipo pequeño, sin intermediarios</span><span style="display: {{ enBlock }}">A small team, no middle layer</span></p>
+            <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);"><span style="display: {{ esBlock }}">Hablas con las mismas personas que escriben el código.</span><span style="display: {{ enBlock }}">You talk to the same people who write the code.</span></p>
+          </div>
+        </div>
+        <div style="display: flex; gap: 14px; align-items: flex-start; background: var(--surface-panel); border: 1px solid var(--line-default); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm); padding: 20px 22px;">
+          <x-import component-from-global-scope="BlaiseDesignSystem_021630.Icon" name="shield-check" size="{{ n22 }}" color="var(--sky-400)" hint-size="22px,22px"></x-import>
+          <div>
+            <p style="margin: 0 0 4px; font-family: var(--font-display); font-weight: 600; font-size: 16.5px; color: var(--text-strong);"><span style="display: {{ esBlock }}">Claridad sobre lo que no controlamos</span><span style="display: {{ enBlock }}">Clear about what we don't control</span></p>
+            <p style="margin: 0; font-size: 15.5px; line-height: 1.6; color: var(--text-muted);"><span style="display: {{ esBlock }}">Te explicamos qué depende de la DGI, del PAC o de tu proveedor, y qué depende de nosotros.</span><span style="display: {{ enBlock }}">We spell out what depends on the DGI, the PAC or your provider — and what depends on us.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" style="position: relative; background: var(--surface-inverse);">
+    <div style="max-width: 1160px; margin: 0 auto; padding: clamp(48px,6vw,80px) clamp(20px,4vw,32px);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: clamp(32px,4vw,48px); align-items: start;">
+        <div>
+          <h2 style="margin: 0 0 16px; font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.12; letter-spacing: -0.028em; color: var(--text-on-inverse); text-wrap: pretty;">
+            <span style="display: {{ esBlock }}">Reserva tus 30 minutos.</span><span style="display: {{ enBlock }}">Claim your 30 minutes.</span>
+          </h2>
+          <p style="margin: 0 0 28px; max-width: 520px; font-size: clamp(15.5px, 1.4vw, 17px); line-height: 1.62; color: var(--text-on-inverse-muted); text-wrap: pretty;">
+            <span style="display: {{ esBlock }}">Escríbenos con una línea sobre tu negocio y te enviamos horarios el mismo día hábil.</span><span style="display: {{ enBlock }}">Send us a line about your business and we'll reply with times the same business day.</span>
+          </p>
+          <a href="mailto:contact@blaisetechnology.com?subject=Consulta%201:1%20gratuita" style="text-decoration: none;">
+            <x-import component-from-global-scope="BlaiseDesignSystem_021630.Button" variant="inverse" size="lg" hint-size="auto,48px">
+              contact@blaisetechnology.com
+            </x-import>
+          </a>
+          <p style="margin: 16px 0 0; font-size: 15px; color: var(--text-on-inverse-muted);">
+            <span style="display: {{ esInline }}">Enlace de agenda en línea: próximamente.</span><span style="display: {{ enInline }}">Online booking link: coming soon.</span>
+          </p>
+        </div>
+        <div style="border-left: 4px solid transparent; border-image: var(--brand-gradient) 1; padding-left: 24px;">
+          <p style="margin: 0 0 10px; font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brand-teal);">
+            <span style="display: {{ esInline }}">Blaise Technology LLC</span><span style="display: {{ enInline }}">Blaise Technology LLC</span>
+          </p>
+          <p style="margin: 0; font-family: var(--font-mono); font-size: 15px; line-height: 1.7; color: var(--text-on-inverse-muted);">1603 Capitol Ave Ste 413G-814<br>Cheyenne, WY 82001</p>
+        </div>
+      </div>
+      <div style="margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--line-inverse); display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between;">
+        <img src="assets/blaise-logo-white.svg" alt="Blaise" style="height: 28px; width: auto; display: block;">
+        <p style="margin: 0; font-size: 13.5px; color: var(--text-on-inverse-muted);">
+          <span style="display: {{ esInline }}">canalfact · Dot · Iris · Techub · Cloud &amp; Innovation</span><span style="display: {{ enInline }}">canalfact · Dot · Iris · Techub · Cloud &amp; Innovation</span>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultLang&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;es&quot;,&quot;en&quot;],&quot;default&quot;:&quot;es&quot;,&quot;tsType&quot;:&quot;'es'|'en'&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { lang: props.defaultLang === 'en' ? 'en' : 'es' };
+  }
+  renderVals() {
+    const es = this.state.lang === 'es';
+    const chip = on => ({
+      bg: on ? 'var(--surface-panel)' : 'transparent',
+      fg: on ? 'var(--text-strong)' : 'var(--text-muted)',
+      shadow: on ? 'var(--shadow-xs)' : 'none'
+    });
+    const a = chip(es), b = chip(!es);
+    return {
+      n16: 16,
+      esBlock: es ? 'block' : 'none',
+      enBlock: es ? 'none' : 'block',
+      esInline: es ? 'inline' : 'none',
+      enInline: es ? 'none' : 'inline',
+      esChipBg: a.bg, esChipFg: a.fg, esChipShadow: a.shadow,
+      enChipBg: b.bg, enChipFg: b.fg, enChipShadow: b.shadow,
+      setEs: () => this.setState({ lang: 'es' }),
+      setEn: () => this.setState({ lang: 'en' }),
+      n20: 20, n22: 22, n24: 24, n26: 26, n32: 32,
+      true: true
+    };
+  }
+}
+
+</script>
+</body>
+</html>
