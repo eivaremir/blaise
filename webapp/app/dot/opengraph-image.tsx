@@ -1,4 +1,9 @@
 import { ImageResponse } from "next/og";
+import { readFileSync } from "fs";
+import { join } from "path";
+
+const logoPng = readFileSync(join(process.cwd(), "public/assets/blaise-logo-og.png"));
+const logoSrc = `data:image/png;base64,${logoPng.toString("base64")}`;
 
 export const dynamic = "force-static";
 export const alt = "Dot — Agentes de servicio con IA";
@@ -24,7 +29,8 @@ export default function OgImage() {
         <div style={{ display: "flex", flexDirection: "column", flex: 1, padding: "52px 72px 52px" }}>
           {/* Breadcrumb */}
           <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-            <span style={{ fontSize: 16, color: "#5b6a8c", display: "flex" }}>Blaise</span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={logoSrc} alt="Blaise" style={{ height: 18, width: "auto" }} />
             <span style={{ fontSize: 16, color: "#2c3757", display: "flex" }}>›</span>
             <span style={{ fontSize: 16, color: "#a9f413", fontWeight: 600, display: "flex" }}>Dot</span>
           </div>

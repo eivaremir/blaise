@@ -1,4 +1,9 @@
 import { ImageResponse } from "next/og";
+import { readFileSync } from "fs";
+import { join } from "path";
+
+const logoPng = readFileSync(join(process.cwd(), "public/assets/blaise-logo-og.png"));
+const logoSrc = `data:image/png;base64,${logoPng.toString("base64")}`;
 
 export const dynamic = "force-static";
 export const alt = "Blaise — Consultoría tecnológica y desarrollo a medida";
@@ -24,31 +29,10 @@ export default function OgImage() {
         <div style={{ width: "100%", height: 5, background: "#5fd4b7", display: "flex" }} />
 
         <div style={{ display: "flex", flexDirection: "column", flex: 1, padding: "52px 72px 52px" }}>
-          {/* Logo / wordmark */}
-          <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: "auto" }}>
-            <div
-              style={{
-                width: 36,
-                height: 36,
-                borderRadius: 8,
-                background: "#446bf4",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <div style={{ width: 14, height: 14, borderRadius: 3, background: "#fff", display: "flex" }} />
-            </div>
-            <span
-              style={{
-                fontSize: 22,
-                fontWeight: 700,
-                color: "#ffffff",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              Blaise
-            </span>
+          {/* Logo */}
+          <div style={{ display: "flex", marginBottom: "auto" }}>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={logoSrc} alt="Blaise" style={{ height: 30, width: "auto" }} />
           </div>
 
           {/* Main content */}
