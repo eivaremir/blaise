@@ -31,7 +31,45 @@ export const metadata: Metadata = {
   },
   description:
     "Blaise es una empresa de tecnología en Panamá: consultoría, IA, nube AWS y facturación electrónica, con el software entregado por el mismo equipo que lo construye.",
-  icons: { icon: "/assets/blaise-mark.svg" },
+  keywords: [
+    "consultoría tecnológica Panamá",
+    "desarrollo de software a medida",
+    "inteligencia artificial",
+    "facturación electrónica Panamá",
+    "AWS Panamá",
+    "agente IA servicio al cliente",
+    "web scraping",
+    "Blaise Technology",
+  ],
+  icons: {
+    icon: [
+      { url: "/assets/blaise-mark.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+  },
+  openGraph: {
+    type: "website",
+    locale: "es_PA",
+    siteName: "Blaise",
+    url: "https://blaisetechnology.com",
+    title: "Blaise — Consultoría tecnológica y desarrollo a medida",
+    description:
+      "Blaise es una empresa de tecnología en Panamá: consultoría, IA, nube AWS y facturación electrónica, con el software entregado por el mismo equipo que lo construye.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blaise — Consultoría tecnológica y desarrollo a medida",
+    description:
+      "Blaise es una empresa de tecnología en Panamá: consultoría, IA, nube AWS y facturación electrónica.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+  alternates: {
+    canonical: "https://blaisetechnology.com",
+  },
 };
 
 export default function RootLayout({

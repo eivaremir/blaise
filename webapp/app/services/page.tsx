@@ -5,9 +5,24 @@ import { LangProvider } from "@/components/LangProvider";
 import { Es, En } from "@/components/I18n";
 
 export const metadata: Metadata = {
-  title: "Servicios",
+  title: "Servicios de tecnología",
   description:
     "Consultoría 1:1 gratuita, facturación electrónica, servicio al cliente con IA, extracción de datos web y nube AWS. Software a medida, ya implementado.",
+  openGraph: {
+    title: "Servicios de tecnología | Blaise",
+    description:
+      "Consultoría 1:1 gratuita, facturación electrónica, servicio al cliente con IA, extracción de datos web y nube AWS. Software a medida, ya implementado.",
+    url: "https://blaisetechnology.com/services/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Servicios de tecnología | Blaise",
+    description:
+      "Consultoría 1:1 gratuita, facturación electrónica, servicio al cliente con IA, extracción de datos web y nube AWS.",
+  },
+  alternates: {
+    canonical: "https://blaisetechnology.com/services/",
+  },
 };
 
 export default function ServicesPage() {

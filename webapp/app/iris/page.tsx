@@ -8,6 +8,21 @@ export const metadata: Metadata = {
   title: "Iris — Inteligencia comercial y logística",
   description:
     "Iris monitorea precios, promociones, disponibilidad y embarques en múltiples retailers de América Latina y el Caribe, con histórico, dashboard y API.",
+  openGraph: {
+    title: "Iris — Inteligencia comercial y logística",
+    description:
+      "Iris monitorea precios, promociones, disponibilidad y embarques en múltiples retailers de América Latina y el Caribe, con histórico, dashboard y API.",
+    url: "https://blaisetechnology.com/iris/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Iris — Inteligencia comercial y logística",
+    description:
+      "Monitoreo de precios, promociones y disponibilidad en retailers de LATAM. Histórico de 3 años, dashboard y API.",
+  },
+  alternates: {
+    canonical: "https://blaisetechnology.com/iris/",
+  },
 };
 
 const featureCards = [

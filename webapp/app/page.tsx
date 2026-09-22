@@ -1,8 +1,21 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon } from "@/components/Icon";
 import { SubNav } from "@/components/SubNav";
 import { LangProvider } from "@/components/LangProvider";
 import { Es, En } from "@/components/I18n";
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: "https://blaisetechnology.com",
+  },
+  openGraph: {
+    title: "Blaise — Consultoría tecnológica y desarrollo a medida",
+    description:
+      "Blaise es una empresa de tecnología en Panamá: consultoría, IA, nube AWS y facturación electrónica, con el software entregado por el mismo equipo que lo construye.",
+    url: "https://blaisetechnology.com",
+  },
+};
 import { ProductTabsProvider, TabChips, TabTitle, TabMeta, TabPanel } from "@/components/ProductTabs";
 
 export default function HomePage() {

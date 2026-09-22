@@ -8,6 +8,21 @@ export const metadata: Metadata = {
   title: "canalfact — Facturación electrónica para Panamá",
   description:
     "Conecta tu negocio con la facturación electrónica en Panamá. canalfact es el puente hacia los proveedores autorizados que reportan a la DGI.",
+  openGraph: {
+    title: "canalfact — Facturación electrónica para Panamá",
+    description:
+      "Conecta tu negocio con la facturación electrónica en Panamá. canalfact es el puente hacia los proveedores autorizados que reportan a la DGI.",
+    url: "https://blaisetechnology.com/canalfact/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "canalfact — Facturación electrónica para Panamá",
+    description:
+      "Conecta tu negocio con la facturación electrónica en Panamá. El puente hacia los proveedores autorizados que reportan a la DGI.",
+  },
+  alternates: {
+    canonical: "https://blaisetechnology.com/canalfact/",
+  },
 };
 
 const featureCardsSecondary = [

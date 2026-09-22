@@ -8,6 +8,21 @@ export const metadata: Metadata = {
   title: "Dot — Agentes de servicio con IA",
   description:
     "Dot es un agente de servicio al cliente construido sobre modelos de lenguaje: responde 24/7, consulta tus sistemas y pasa a una persona cuando hace falta.",
+  openGraph: {
+    title: "Dot — Agentes de servicio con IA",
+    description:
+      "Dot es un agente de servicio al cliente construido sobre modelos de lenguaje: responde 24/7, consulta tus sistemas y pasa a una persona cuando hace falta.",
+    url: "https://blaisetechnology.com/dot/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Dot — Agentes de servicio con IA",
+    description:
+      "Agente de servicio al cliente con LLM: responde 24/7, consulta tus sistemas y pasa a una persona cuando hace falta.",
+  },
+  alternates: {
+    canonical: "https://blaisetechnology.com/dot/",
+  },
 };
 
 const DOT_MARK = (
