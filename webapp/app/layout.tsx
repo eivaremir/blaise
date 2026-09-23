@@ -42,10 +42,8 @@ export const metadata: Metadata = {
     "Blaise Technology",
   ],
   icons: {
-    icon: [
-      { url: "/assets/blaise-mark.svg", type: "image/svg+xml" },
-      { url: "/favicon.ico", sizes: "any" },
-    ],
+    icon: "/favicon.ico",
+    apple: "/assets/apple-touch-icon.png",
   },
   openGraph: {
     type: "website",
